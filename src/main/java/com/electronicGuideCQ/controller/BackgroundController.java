@@ -96,4 +96,12 @@ public class BackgroundController {
 		plan.setMsg("验证码错误");
 		return JsonUtil.getJsonFromObject(plan);
 	}
+
+	@RequestMapping(value="/exit")
+	public String exit(HttpSession session) {
+		System.out.println("退出接口");
+		 Subject currentUser = SecurityUtils.getSubject();
+	       currentUser.logout();    
+		return "/background/login";
+	}
 }

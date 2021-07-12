@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>电子导游平台登录</title>
 <%@include file="js.jsp"%>
 <style>
 .beg-login-box {

@@ -1,0 +1,235 @@
+.editPwdBg_div{
+	width: 100%;height:100%;
+	background: rgba(0,0,0,0.65);
+	position: fixed;
+	display: none;
+	z-index: 1001;
+}
+.editPwd_div{
+	width:400px;height:420px;margin:100px auto;background: #f8f8f8;border-radius: 6px;
+}
+.editPwd_div .close_span{
+	float: right;margin-top: 20px;margin-right: 20px;font-size: 25px;cursor: pointer;
+}
+.editPwd_div .title{
+	font-size: 22px;color: #4CAF50;text-align: center;padding-top: 50px;
+}
+.editPwd_div .ymm_div{
+	width:240px;margin: auto;padding-top: 20px;
+}
+.editPwd_div .xmm_div,.editPwd_div .qrmm_div{
+	width:240px;margin: auto;
+}
+.editPwd_div input{
+	width: 216px;
+    height: 46px;
+    padding: 0 15px;
+    font-size: 12px;
+	border: 1px solid #DDE0E2;
+    border-radius: 4px;
+}
+.editPwd_div .confirm_div{
+	width:240px;height:40px;line-height:40px;margin: 30px auto;text-align:center;font-size:17px;color:#fff;background-color:#4caf50;border-radius:3px;cursor: pointer;
+}
+.editPwd_div .warn_div{
+	width: 100%;margin-top: 20px;border-radius: 0 0 4px 4px;font-size: 12px;text-align: center;color: #9b9b9b;
+}
+
+.bwxQrcodeBg_div{
+	width: 100%;height:100%;background: rgba(0,0,0,0.65);position: fixed;display:none;z-index: 1001;
+}
+.bwxQrcode_div{
+	width:600px;height:340px;margin:100px auto;background: #f8f8f8;border-radius: 6px;padding: 1px;
+}
+.bwxQrcode_div .close_span{
+	float: right;margin-top: 20px;margin-right: 20px;font-size: 25px;cursor: pointer;
+}
+.bwxQrcode_div .title_h3{
+	margin-top: 30px;text-align: center;font-size: 18px;font-weight: 700;color: #4caf50;
+}
+.bwxQrcode_div .title_div{
+	font-size: 14px;margin-top: 16px;text-align: center;
+}
+.bwxQrcode_div .qrcode_div{
+	width: 100%;height: 200px;text-align: center;margin-top: 20px;
+}
+.bwxQrcode_div .qrcode_img{
+	width: 200px;height:200px;
+}
+.bwxQrcode_div .yhzs_span{
+	float: right;margin-right: 25px;color: #4caf50;font-size: 12px;cursor: pointer;
+}
+
+.rbwxQrcodeBg_div{
+	width: 100%;height:100%;background: rgba(0,0,0,0.65);position: fixed;display:none;z-index: 1001;
+}
+.rbwxQrcode_div{
+	width:600px;height:340px;margin:100px auto;background: #f8f8f8;border-radius: 6px;padding: 1px;
+}
+.rbwxQrcode_div .close_span{
+	float: right;margin-top: 20px;margin-right: 20px;font-size: 25px;cursor: pointer;
+}
+.rbwxQrcode_div .title_h3{
+	margin-top: 30px;text-align: center;font-size: 18px;font-weight: 700;color: #4caf50;
+}
+.rbwxQrcode_div .title_div{
+	font-size: 14px;margin-top: 16px;text-align: center;
+}
+.rbwxQrcode_div .qrcode_div{
+	width: 100%;height: 200px;text-align: center;margin-top: 20px;
+}
+.rbwxQrcode_div .qrcode_img{
+	width: 200px;height:200px;
+}
+.rbwxQrcode_div .yhzs_span{
+	float: right;margin-right: 25px;color: #4caf50;font-size: 12px;cursor: pointer;
+}
+
+.map_bg_div{
+	width: 100%;
+	height:100%;
+	background: rgba(0,0,0,0.65);
+	position: fixed;
+	display: none;
+	z-index: 1002;
+}
+.map_bg_div .window_div{
+	width:800px;height:600px;margin:100px auto;background-color: #fff;
+}
+.map_bg_div .close_span{
+	float: right;margin-top: 10px;margin-right: 20px;font-size: 25px;cursor: pointer;
+}
+.map_bg_div .map_div{
+	width:100%;height:500px;
+}
+.map_bg_div .info_div{
+	width: 650px;height: 50px;line-height: 50px;margin: auto;
+}
+.map_bg_div .info_div .key_span{
+	color: #000;
+	margin-left: 20px;
+}
+.map_bg_div .info_div .longitude_inp,.map_bg_div .info_div .latitude_inp{
+	width: 100px;
+}
+.map_bg_div .info_div .shopAdd_inp{
+	width: 200px;
+}
+.map_bg_div .info_div .confirm_but_div{
+	width: 50px;
+	height: 30px;
+	line-height: 30px;
+	margin-top:10px;
+	float:right; 
+	text-align: center;
+	color: #fff;
+	background-color: #1777FF;
+	border-radius: 5px;
+}
+
+.editMerchantBg_div{
+	width: 100%;height:100%;
+	background: rgba(0,0,0,0.65);
+	position: fixed;
+	display: none;
+	z-index: 1001;
+}
+.editMerchant_div{
+	width:500px;height:600px;margin:100px auto;background: #f8f8f8;border-radius: 6px;overflow-y:scroll; 
+}
+.editMerchant_div .close_span{
+	float: right;margin-top: 20px;margin-right: 20px;font-size: 25px;cursor: pointer;
+}
+.editMerchant_div .title{
+	font-size: 22px;color: #4CAF50;text-align: center;padding-top: 50px;
+}
+.editMerchant_div .gsmc_div,.editMerchant_div .gsdz_div,.editMerchant_div .gswz_div,.editMerchant_div .lxdh_div,.editMerchant_div .yysj_div{
+	width:310px;margin: auto;padding-top: 20px;
+}
+.editMerchant_div .logo_div,.editMerchant_div .yyzz_div{
+	width:310px;height:230px;line-height:230px;margin: auto;padding-top: 20px;
+}
+.editMerchant_div .dhjpgz_span{
+	margin-top: 36px;position: absolute;
+}
+.editMerchant_div input{
+	width: 200px;height:30px;margin-left: 20px;border: 1px solid #DDE0E2;
+}
+.editMerchant_div textarea{
+	width: 200px;height:100px;margin-left: 108px;border: 1px solid #DDE0E2;
+}
+.editMerchant_div .gswz_div .value_div{
+	width: 250px;margin-top: -20px;margin-left: 108px;
+}
+.editMerchant_div .yysj_div .time_div{
+	width: 260px;margin-top: -20px;margin-left: 110px;
+}
+.editMerchant_div .yyr_div .list_div{
+	width: 270px;height: 70px;margin-top:-70px;margin-left: 108px;
+}
+.editMerchant_div .yyr_div .list_div .item_div{
+	width: 60px;height: 30px;line-height: 30px;text-align:center;cursor: pointer;
+}
+.editMerchant_div .img_div{
+	width:180px;
+	height:230px;
+	margin-top:-230px;
+	margin-left: 108px;
+}
+.upLoBut_div,.upYyzzBut_div{
+	width: 120px;
+	height: 30px;
+	line-height:30px;
+	text-align:center;
+	color:#fff;
+	background-color: #1777FF;
+	border-radius:5px;
+}
+.editMerchant_div .logo_img,.editMerchant_div .yyzz_img{
+	width: 180px;
+	height:180px;
+	margin-top: 10px;
+}
+.editMerchant_div .but_div{
+	width:168px;margin: auto;padding-top: 20px;padding-bottom: 20px;
+}
+.editMerchant_div .but{
+	width: 76px;padding: 5px 10px;font-size: 14px;border: 1px solid #d9d9d9;border-radius: 4px;cursor: pointer;
+}
+.editMerchant_div .cancel_but{
+	color: #323232;background: #FFF;
+}
+.editMerchant_div .submit_but{
+	color: #FFF;background: #4CAF52;margin-left: 12px;
+}
+
+.yhxx_div{
+	height:570px;
+	margin:20px 0 40px 238px;
+	padding-top:40px;
+	padding-left:40px;
+	background-color:#FAFDFE;
+}
+.yhxx_div .title_div{
+	font-size: 20px;color: #373737;font-weight:700;
+}
+.yhxx_div .attr_div{
+	margin-top:40px;
+}
+.yhxx_div .attr_div .key_span{
+	font-size: 15px;color: #373737;font-weight: 700;
+}
+.yhxx_div .attr_div .value_span{
+	font-size: 15px;
+}
+.yhxx_div .xgmm_span{
+	font-size: 15px;color: #357bb3;margin-left: 15px;cursor: pointer;
+}
+.yhxx_div .attr_div img{
+	width: 150px;height:150px;
+}
+.yhxx_div .attr_div .eu_but_span{
+	font-size: 15px;
+	color: #357bb3;
+	cursor: pointer;
+}
