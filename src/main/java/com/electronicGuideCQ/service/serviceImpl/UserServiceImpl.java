@@ -3,6 +3,7 @@ package com.electronicGuideCQ.service.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.electronicGuideCQ.entity.*;
 import com.electronicGuideCQ.dao.*;
 import com.electronicGuideCQ.service.*;
 
@@ -27,5 +28,11 @@ public class UserServiceImpl implements UserService {
 	public int updatePwdById(String password, Integer id) {
 		// TODO Auto-generated method stub
 		return userDao.updatePwdById(password,id);
+	}
+
+	@Override
+	public int edit(User user) {
+		// TODO Auto-generated method stub
+		return userDao.edit(user);
 	}
 }

@@ -75,19 +75,19 @@ function checkNewPwd2(){
 }
 
 function focusNickName(){
-	var shopName = $("#shopName").val();
-	if(shopName=="公司名称不能为空"){
-		$("#shopName").val("");
-		$("#shopName").css("color", "#555555");
+	var nickName = $("#nickName").val();
+	if(nickName=="昵称不能为空"){
+		$("#nickName").val("");
+		$("#nickName").css("color", "#555555");
 	}
 }
 
-//验证商家名称
-function checkShopName(){
-	var shopName = $("#shopName").val();
-	if(shopName==null||shopName==""||shopName=="商家名称不能为空"){
-		$("#shopName").css("color","#E15748");
-    	$("#shopName").val("商家名称不能为空");
+//验证昵称
+function checkNickName(){
+	var nickName = $("#nickName").val();
+	if(nickName==null||nickName==""||nickName=="昵称不能为空"){
+		$("#nickName").css("color","#E15748");
+    	$("#nickName").val("昵称不能为空");
     	return false;
 	}
 	else
@@ -124,6 +124,34 @@ function checkEditPwd(){
 			}
 		}
 	}
+}
+
+function checkEditUser(){
+	if(checkNickName()){
+		editUser();
+	}
+}
+
+function editUser(){
+	var formData = new FormData($("#form1")[0]);
+	$.ajax({
+		type:"post",
+		url:userPath+"editUser",
+		dataType: "json",
+		data:formData,
+		cache: false,
+		processData: false,
+		contentType: false,
+		success: function (data){
+			if(data.status==1){
+				alert(data.msg);
+				location.href=path+"background/exit";
+			}
+			else{
+				alert(data.msg);
+			}
+		}
+	});
 }
 
 function openEditPwdDialog(flag){
@@ -194,23 +222,23 @@ function setFitWidthInParent(o){
 		</div>
 		<h4 class="title">用户信息</h4>
 		<form id="form1" name="form1" method="post" enctype="multipart/form-data">
-		<input type="hidden" id="id" name="id" value="${sessionScope.merchant.id }">
+		<input type="hidden" id="id" name="id" value="${sessionScope.user.id }">
 		<div class="nickName_div">
 			<span>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</span>
-			<input type="text" id="shopName" name="shopName" value="${sessionScope.merchant.shopName }" onfocus="focusNickName()" onblur="checkShopName()"/>
+			<input type="text" id="nickName" name="nickName" value="${sessionScope.user.nickName }" onfocus="focusNickName()" onblur="checkNickName()"/>
 		</div>
 		<div class="headImgUrl_div">
 			<span>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;像</span>
 			<div class="img_div">
 				<div class="upHiuBut_div" onclick="uploadHeadImgUrl()">选择头像</div>
 				<input type="file" id="headImgUrl_inp" name="headImgUrl_inp" style="display: none;" onchange="showHeadImgUrl(this)"/>
-				<img class="headImgUrl_img" id="headImgUrl_img" alt="" src="${sessionScope.merchant.headImgUrl }">
+				<img class="headImgUrl_img" id="headImgUrl_img" alt="" src="${sessionScope.user.headImgUrl }">
 			</div>
 		</div>
 		</form>
 		<div class="but_div">
 			<button class="but cancel_but" onclick="openEditUserDialog(0)">取消</button>
-			<button class="but submit_but" onclick="checkEditMerchant()">提交</button>
+			<button class="but submit_but" onclick="checkEditUser()">提交</button>
 		</div>
 	</div>
 </div>

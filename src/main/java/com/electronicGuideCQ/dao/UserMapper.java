@@ -11,4 +11,6 @@ public interface UserMapper {
 	public String getPwdByUserName(@Param("userName")String userName);
 
 	public int updatePwdById(@Param("password")String password, @Param("id")Integer id);
+
+	int edit(User user);
 }

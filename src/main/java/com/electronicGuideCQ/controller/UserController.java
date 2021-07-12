@@ -9,13 +9,15 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.electronicGuideCQ.service.*;
 import com.electronicGuideCQ.entity.*;
 import com.electronicGuideCQ.util.*;
-import com.electronicGuideCQ.controller.UserController;
-import com.electronicGuideCQ.entity.User;
+
+import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping(UserController.MODULE_NAME)
@@ -63,5 +65,56 @@ public class UserController {
 			plan.setStatus(1);
 		}
 		return JsonUtil.getJsonFromObject(plan);
+	}
+	
+	@RequestMapping(value="/editUser",produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String editUser(User user,
+			@RequestParam(value="headImgUrl_inp",required=false) MultipartFile headImgUrl_inp,
+			HttpServletRequest request) {
+
+		String json=null;;
+		try {
+			PlanResult plan=new PlanResult();
+			MultipartFile[] fileArr=new MultipartFile[1];
+			fileArr[0]=headImgUrl_inp;
+			for (int i = 0; i < fileArr.length; i++) {
+				String jsonStr = null;
+				if(fileArr[i].getSize()>0) {
+					String folder=null;
+					switch (i) {
+					case 0:
+						folder="UserHeadImg";
+						break;
+					}
+					jsonStr = FileUploadUtils.appUploadContentImg(request,fileArr[i],folder);
+					JSONObject fileJson = JSONObject.fromObject(jsonStr);
+					if("成功".equals(fileJson.get("msg"))) {
+						JSONObject dataJO = (JSONObject)fileJson.get("data");
+						switch (i) {
+						case 0:
+							user.setHeadImgUrl(dataJO.get("src").toString());
+							break;
+						}
+					}
+				}
+			
+			}
+			int count=userService.edit(user);
+			if(count==0) {
+				plan.setStatus(0);
+				plan.setMsg("编辑用户信息失败！");
+				json=JsonUtil.getJsonFromObject(plan);
+			}
+			else {
+				plan.setStatus(1);
+				plan.setMsg("用户信息已编辑，等待审核！");
+				json=JsonUtil.getJsonFromObject(plan);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return json;
 	}
 }

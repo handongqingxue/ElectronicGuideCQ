@@ -20,4 +20,17 @@
 	<update id="updatePwdById">
 		update user set password=#{password} where id=#{id}
 	</update>
+	<update id="edit">
+		update user set
+		<trim suffixOverrides=",">
+			<if test="nickName!=null">
+				nickName=#{nickName},
+			</if>
+			<if test="headImgUrl!=null">
+				headImgUrl=#{headImgUrl},
+			</if>
+				`check`=0
+		</trim>
+		where id=#{id}
+	</update>
 </mapper>
