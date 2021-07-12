@@ -14,4 +14,10 @@
 			and password=#{password}
 		</if>
 	</select>
+	<select id="getPwdByUserName" resultType="String">
+		select password from user where userName=#{userName}
+	</select>
+	<update id="updatePwdById">
+		update user set password=#{password} where id=#{id}
+	</update>
 </mapper>

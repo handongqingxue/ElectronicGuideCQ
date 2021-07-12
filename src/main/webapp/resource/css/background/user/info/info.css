@@ -127,56 +127,41 @@
 	border-radius: 5px;
 }
 
-.editMerchantBg_div{
+.editUserBg_div{
 	width: 100%;height:100%;
 	background: rgba(0,0,0,0.65);
 	position: fixed;
 	display: none;
 	z-index: 1001;
 }
-.editMerchant_div{
+.editUser_div{
 	width:500px;height:600px;margin:100px auto;background: #f8f8f8;border-radius: 6px;overflow-y:scroll; 
 }
-.editMerchant_div .close_span{
+.editUser_div .close_span{
 	float: right;margin-top: 20px;margin-right: 20px;font-size: 25px;cursor: pointer;
 }
-.editMerchant_div .title{
+.editUser_div .title{
 	font-size: 22px;color: #4CAF50;text-align: center;padding-top: 50px;
 }
-.editMerchant_div .gsmc_div,.editMerchant_div .gsdz_div,.editMerchant_div .gswz_div,.editMerchant_div .lxdh_div,.editMerchant_div .yysj_div{
+.editUser_div .nickName_div{
 	width:310px;margin: auto;padding-top: 20px;
 }
-.editMerchant_div .logo_div,.editMerchant_div .yyzz_div{
+.editUser_div .headImgUrl_div{
 	width:310px;height:230px;line-height:230px;margin: auto;padding-top: 20px;
 }
-.editMerchant_div .dhjpgz_span{
-	margin-top: 36px;position: absolute;
-}
-.editMerchant_div input{
+.editUser_div input{
 	width: 200px;height:30px;margin-left: 20px;border: 1px solid #DDE0E2;
 }
-.editMerchant_div textarea{
+.editUser_div textarea{
 	width: 200px;height:100px;margin-left: 108px;border: 1px solid #DDE0E2;
 }
-.editMerchant_div .gswz_div .value_div{
-	width: 250px;margin-top: -20px;margin-left: 108px;
-}
-.editMerchant_div .yysj_div .time_div{
-	width: 260px;margin-top: -20px;margin-left: 110px;
-}
-.editMerchant_div .yyr_div .list_div{
-	width: 270px;height: 70px;margin-top:-70px;margin-left: 108px;
-}
-.editMerchant_div .yyr_div .list_div .item_div{
-	width: 60px;height: 30px;line-height: 30px;text-align:center;cursor: pointer;
-}
-.editMerchant_div .img_div{
+.editUser_div .img_div{
 	width:180px;
 	height:230px;
 	margin-top:-230px;
 	margin-left: 108px;
 }
-.upLoBut_div,.upYyzzBut_div{
+.upHiuBut_div{
 	width: 120px;
 	height: 30px;
 	line-height:30px;
@@ -185,21 +170,21 @@
 	background-color: #1777FF;
 	border-radius:5px;
 }
-.editMerchant_div .logo_img,.editMerchant_div .yyzz_img{
+.editUser_div .headImgUrl_img{
 	width: 180px;
 	height:180px;
 	margin-top: 10px;
 }
-.editMerchant_div .but_div{
+.editUser_div .but_div{
 	width:168px;margin: auto;padding-top: 20px;padding-bottom: 20px;
 }
-.editMerchant_div .but{
+.editUser_div .but{
 	width: 76px;padding: 5px 10px;font-size: 14px;border: 1px solid #d9d9d9;border-radius: 4px;cursor: pointer;
 }
-.editMerchant_div .cancel_but{
+.editUser_div .cancel_but{
 	color: #323232;background: #FFF;
 }
-.editMerchant_div .submit_but{
+.editUser_div .submit_but{
 	color: #FFF;background: #4CAF52;margin-left: 12px;
 }
 
