@@ -14,4 +14,6 @@ public interface ScenicDistrictMapper {
 
 	ScenicDistrict selectById(@Param("id")String id);
 
+	int edit(ScenicDistrict scenicDistrict);
+
 }

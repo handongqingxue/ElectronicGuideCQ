@@ -19,4 +19,41 @@
  	<select id="selectById" resultType="com.electronicGuideCQ.entity.ScenicDistrict">
  		select * from scenic_district where id=#{id}
  	</select>
+ 	<update id="edit">
+		update scenic_district set
+		<trim suffixOverrides=",">
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="address!=null">
+				address=#{address},
+			</if>
+			<if test="qrcodeUrl!=null">
+				qrcodeUrl=#{qrcodeUrl},
+			</if>
+			<if test="mapUrl!=null">
+				mapUrl=#{mapUrl},
+			</if>
+			<if test="mapWidth!=null">
+				mapWidth=#{mapWidth},
+			</if>
+			<if test="mapHeight!=null">
+				mapHeight=#{mapHeight},
+			</if>
+			<if test="picWidth!=null">
+				picWidth=#{picWidth},
+			</if>
+			<if test="picHeight!=null">
+				picHeight=#{picHeight},
+			</if>
+			<if test="introduce!=null">
+				introduce=#{introduce},
+			</if>
+				modifyTime=now(),
+			<if test="sort!=null">
+				sort=#{sort},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
  </mapper>

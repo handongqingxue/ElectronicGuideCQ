@@ -33,4 +33,10 @@ public class ScenicDistrictServiceImpl implements ScenicDistrictService {
 		return scenicDistrictDao.selectById(id);
 	}
 
+	@Override
+	public int edit(ScenicDistrict scenicDistrict) {
+		// TODO Auto-generated method stub
+		return scenicDistrictDao.edit(scenicDistrict);
+	}
+
 }

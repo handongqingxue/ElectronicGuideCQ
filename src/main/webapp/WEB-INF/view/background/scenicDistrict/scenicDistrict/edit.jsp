@@ -8,7 +8,6 @@
 <%@include file="../../js.jsp"%>
 <style type="text/css">
 .center_con_div{
-	width: 100%;
 	height: 90vh;
 	margin-left:205px;
 	overflow-y: scroll;
@@ -20,11 +19,40 @@
 	margin-left: 20px;
 	font-size: 18px;
 }
+.name_inp{
+	width: 150px;
+	height:30px;
+}
+.address_inp{
+	width: 250px;
+	height:30px;
+}
+.mapWidth_inp,.mapHeight_inp,.picWidth_inp,.picHeight_inp{
+	width: 170px;
+	height:30px;
+}
+.sort_inp{
+	width: 100px;
+	height:30px;
+}
+.upQrcodeBut_div,.upMapBut_div{
+	width: 120px;
+	height: 30px;
+	line-height:30px;
+	text-align:center;
+	color:#fff;
+	background-color: #1777FF;
+	border-radius:5px;
+}
+.qrcodeUrl_img,.mapUrl_img{
+	width: 180px;
+	height:180px;
+	margin-top: 10px;
+}
 </style>
 <script type="text/javascript">
 var path='<%=basePath %>';
-var merCardPath='<%=basePath%>'+"background/merchantCard/";
-var shopId='${sessionScope.merchant.id }';
+var scenicDistrictPath='<%=basePath%>'+"background/scenicDistrict/";
 var dialogTop=10;
 var dialogLeft=20;
 var edNum=0;
@@ -42,14 +70,15 @@ function initDialogPosition(){
 	var ccDiv=$("#center_con_div");
 	ccDiv.append(edpw);
 	ccDiv.append(edws);
+	ccDiv.css("width",setFitWidthInParent("body","center_con_div")+"px");
 }
 
 function initEditDialog(){
 	dialogTop+=20;
 	$("#edit_div").dialog({
-		title:"会员卡信息",
+		title:"景区信息",
 		width:setFitWidthInParent("body","edit_div"),
-		height:450,
+		height:730,
 		top:dialogTop,
 		left:dialogLeft,
 		buttons:[
@@ -64,8 +93,16 @@ function initEditDialog(){
 	$("#edit_div table td").css("padding-left","50px");
 	$("#edit_div table td").css("padding-right","20px");
 	$("#edit_div table td").css("font-size","15px");
+	$("#edit_div table .td1").css("width","10%");
+	$("#edit_div table .td2").css("width","35%");
+	$("#edit_div table tr").css("border-bottom","#CAD9EA solid 1px");
 	$("#edit_div table tr").each(function(i){
-		$(this).css("height",(i==4?150:45)+"px");
+		if(i==1)
+			$(this).css("height","250px");
+		else if(i==4)
+			$(this).css("height","200px");
+		else
+			$(this).css("height","45px");
 	});
 
 	$(".panel.window").eq(edNum).css("margin-top","20px");
@@ -86,9 +123,208 @@ function initEditDialog(){
 	$(".dialog-button .l-btn-text").css("font-size","20px");
 }
 
+function checkEdit(){
+	if(checkName()){
+		if(checkAddress()){
+			if(checkMapWidth()){
+				if(checkMapHeight()){
+					if(checkPicWidth()){
+						if(checkPicHeight()){
+							if(checkIntroduce()){
+								editScenicDistrict();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+function editScenicDistrict(){
+	var formData = new FormData($("#form1")[0]);
+	$.ajax({
+		type:"post",
+		url:scenicDistrictPath+"editScenicDistrict",
+		dataType: "json",
+		data:formData,
+		cache: false,
+		processData: false,
+		contentType: false,
+		success: function (data){
+			if(data.status==1){
+				alert(data.msg);
+				location.href=scenicDistrictPath+"scenicDistrict/list";
+			}
+			else{
+				alert(data.msg);
+			}
+		}
+	});
+}
+
+function focusName(){
+	var name = $("#name").val();
+	if(name=="景区名称不能为空"){
+		$("#name").val("");
+		$("#name").css("color", "#555555");
+	}
+}
+
+//验证景区名称
+function checkName(){
+	var name = $("#name").val();
+	if(name==null||name==""||name=="景区名称不能为空"){
+		$("#name").css("color","#E15748");
+    	$("#name").val("景区名称不能为空");
+    	return false;
+	}
+	else
+		return true;
+}
+
+function focusAddress(){
+	var address = $("#address").val();
+	if(address=="景区名称不能为空"){
+		$("#address").val("");
+		$("#address").css("color", "#555555");
+	}
+}
+
+//验证景区地址
+function checkAddress(){
+	var address = $("#address").val();
+	if(address==null||address==""||address=="景区名称不能为空"){
+		$("#address").css("color","#E15748");
+    	$("#address").val("景区地址不能为空");
+    	return false;
+	}
+	else
+		return true;
+}
+
+//验证地图显示宽度
+function checkMapWidth(){
+	var mapWidth = $("#mapWidth").val();
+	if(mapWidth==null||mapWidth==""){
+	  	alert("请输入地图显示宽度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证地图显示高度
+function checkMapHeight(){
+	var mapHeight = $("#mapHeight").val();
+	if(mapHeight==null||mapHeight==""){
+	  	alert("请输入地图显示高度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证地图图片宽度
+function checkPicWidth(){
+	var picWidth = $("#picWidth").val();
+	if(picWidth==null||picWidth==""){
+	  	alert("请输入地图图片宽度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证地图图片高度
+function checkPicHeight(){
+	var picHeight = $("#picHeight").val();
+	if(picHeight==null||picHeight==""){
+	  	alert("请输入地图图片高度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+function focusIntroduce(){
+	var introduce = $("#introduce").val();
+	if(introduce=="景区介绍不能为空"){
+		$("#introduce").val("");
+		$("#introduce").css("color", "#555555");
+	}
+}
+
+//验证景区介绍
+function checkIntroduce(){
+	var introduce = $("#introduce").val();
+	if(introduce==null||introduce==""||introduce=="景区介绍不能为空"){
+		$("#introduce").css("color","#E15748");
+    	$("#introduce").val("景区介绍不能为空");
+    	return false;
+	}
+	else
+		return true;
+}
+
+function uploadQrcodeUrl(){
+	document.getElementById("qrcodeUrl_file").click();
+}
+
+function uploadMapUrl(){
+	document.getElementById("mapUrl_file").click();
+}
+
+function showQrcodeUrl(obj){
+	var file = $(obj);
+    var fileObj = file[0];
+    var windowURL = window.URL || window.webkitURL;
+    var dataURL;
+    var $img = $("#qrcodeUrl_img");
+
+    if (fileObj && fileObj.files && fileObj.files[0]) {
+        dataURL = windowURL.createObjectURL(fileObj.files[0]);
+        $img.attr("src", dataURL);
+    } else {
+        dataURL = $file.val();
+        var imgObj = document.getElementById("preview");
+        // 两个坑:
+        // 1、在设置filter属性时，元素必须已经存在在DOM树中，动态创建的Node，也需要在设置属性前加入到DOM中，先设置属性在加入，无效；
+        // 2、src属性需要像下面的方式添加，上面的两种方式添加，无效；
+        imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+        imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+
+    }
+}
+
+function showMapUrl(obj){
+	var file = $(obj);
+    var fileObj = file[0];
+    var windowURL = window.URL || window.webkitURL;
+    var dataURL;
+    var $img = $("#mapUrl_img");
+
+    if (fileObj && fileObj.files && fileObj.files[0]) {
+        dataURL = windowURL.createObjectURL(fileObj.files[0]);
+        $img.attr("src", dataURL);
+    } else {
+        dataURL = $file.val();
+        var imgObj = document.getElementById("preview");
+        // 两个坑:
+        // 1、在设置filter属性时，元素必须已经存在在DOM树中，动态创建的Node，也需要在设置属性前加入到DOM中，先设置属性在加入，无效；
+        // 2、src属性需要像下面的方式添加，上面的两种方式添加，无效；
+        imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+        imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+
+    }
+}
+
 function setFitWidthInParent(parent,self){
 	var space=0;
 	switch (self) {
+	case "center_con_div":
+		space=205;
+		break;
 	case "edit_div":
 		space=340;
 		break;
@@ -106,82 +342,102 @@ function setFitWidthInParent(parent,self){
 <div class="layui-layout layui-layout-admin">	
 <%@include file="../../side.jsp"%>
 <div class="center_con_div" id="center_con_div">
-	<div class="page_location_div">编辑会员卡</div>
+	<div class="page_location_div">编辑景区</div>
 	
 	<div id="edit_div">
-		<input type="hidden" id="id" value="${requestScope.merchantCard.id }" />
+		<form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">
+		<input type="hidden" name="id" id="id" value="${requestScope.scenicDistrict.id }" />
 		<table>
-		  <tr style="border-bottom: #CAD9EA solid 1px;">
-			<td align="right" style="width:15%;">
-				会员卡名称
+		  <tr>
+			<td class="td1" align="right">
+				名称
 			</td>
-			<td style="width:30%;">
-				<input type="text" id="name" name="name" value="${requestScope.merchantCard.name }" placeholder="请输入会员卡名称" style="width: 150px;height:30px;" onfocus="focusName()" onblur="checkName()"/>
+			<td class="td2">
+				<input type="text" class="name_inp" id="name" name="name" value="${requestScope.scenicDistrict.name }" placeholder="请输入景区名称" onfocus="focusName()" onblur="checkName()"/>
 			</td>
-			<td align="right" style="width:15%;">
-				会员卡类型
+			<td class="td1" align="right">
+				地址
 			</td>
-			<td style="width:30%;">
-				<span>${requestScope.merchantCard.typeName }</span>
-			</td>
-		  </tr>
-		  <tr style="border-bottom: #CAD9EA solid 1px;">
-			<td align="right" style="width:15%;">
-				使用次数
-			</td>
-			<td style="width:30%;">
-				<input type="number" id="consumeCount" name="consumeCount" value="${requestScope.merchantCard.consumeCount }" placeholder="请输入使用次数" style="width: 150px;height:30px;"/>
-			</td>
-			<td align="right" style="width:15%;">
-				金额
-			</td>
-			<td style="width:30%;">
-				<input type="number" id="money" name="money" value="${requestScope.merchantCard.money }" placeholder="请输入金额" style="width: 150px;height:30px;"/>
+			<td class="td2">
+				<input type="text" class="address_inp" id="address" name="address" value="${requestScope.scenicDistrict.address }" placeholder="请输入景区地址" onfocus="focusAddress()" onblur="checkAddress()"/>
 			</td>
 		  </tr>
-		  <tr style="border-bottom: #CAD9EA solid 1px;">
-			<td align="right" style="width:15%;">
-				折扣
+		  <tr>
+			<td class="td1" align="right">
+				二维码
 			</td>
-			<td style="width:30%;">
-				<input type="number" id="discount" name="discount" value="${requestScope.merchantCard.discount }" placeholder="请输入折扣" style="width: 150px;height:30px;"/>%
+			<td class="td2">
+				<div class="upQrcodeBut_div" onclick="uploadQrcodeUrl()">选择二维码</div>
+				<input type="file" id="qrcodeUrl_file" name="qrcodeUrl_file" style="display: none;" onchange="showQrcodeUrl(this)"/>
+				<img class="qrcodeUrl_img" id="qrcodeUrl_img" alt="" src="${requestScope.scenicDistrict.qrcodeUrl }"/>
 			</td>
-			<td align="right" style="width:15%;">
-				上浮百分比
+			<td class="td1" align="right">
+				地图
 			</td>
-			<td style="width:30%;">
-				<input type="number" id="sfbfb" name="sfbfb" value="${requestScope.merchantCard.sfbfb }" placeholder="请输入上浮百分比" style="width: 150px;height:30px;"/>%
-			</td>
-		  </tr>
-		  <tr style="border-bottom: #CAD9EA solid 1px;">
-			<td align="right" style="width:15%;">
-				商家分成
-			</td>
-			<td style="width:30%;">
-				<input type="number" id="shopFC" name="shopFC" value="${requestScope.merchantCard.shopFC }" placeholder="请输入商家分成" style="width: 150px;height:30px;"/>%
-			</td>
-			<td align="right" style="width:15%;">
-			
-			</td>
-			<td style="width:30%;">
-			
+			<td class="td2">
+				<div class="upMapBut_div" onclick="uploadMapUrl()">选择地图</div>
+				<input type="file" id="mapUrl_file" name="mapUrl_file" style="display: none;" onchange="showMapUrl(this)"/>
+				<img class="mapUrl_img" id="mapUrl_img" alt="" src="${requestScope.scenicDistrict.mapUrl }"/>
 			</td>
 		  </tr>
-		  <tr style="border-bottom: #CAD9EA solid 1px;">
-			<td align="right" style="width:15%;">
-				描述
+		  <tr>
+			<td class="td1" align="right">
+				地图显示宽度
 			</td>
-			<td style="width:30%;">
-				<textarea rows="5" cols="20" id="describe" name="describe">${requestScope.merchantCard.describe }</textarea>
+			<td class="td2">
+				<input type="number" class="mapWidth_inp" id="mapWidth" name="mapWidth" value="${requestScope.scenicDistrict.mapWidth }" placeholder="请输入地图显示宽度"/>px
 			</td>
-			<td align="right" style="width:15%;">
-				购买须知
+			<td class="td1" align="right">
+				地图显示长度
 			</td>
-			<td style="width:30%;">
-				<textarea rows="5" cols="20" id="gmxz" name="gmxz">${requestScope.merchantCard.gmxz }</textarea>
+			<td class="td2">
+				<input type="number" class="mapHeight_inp" id="mapHeight" name="mapHeight" value="${requestScope.scenicDistrict.mapHeight }" placeholder="请输入地图显示长度"/>px
+			</td>
+		  </tr>
+		  <tr>
+			<td class="td1" align="right">
+				地图图片宽度
+			</td>
+			<td class="td2">
+				<input type="number" class="picWidth_inp" id="picWidth" name="picWidth" value="${requestScope.scenicDistrict.picWidth }" placeholder="请输入地图图片宽度"/>px
+			</td>
+			<td class="td1" align="right">
+				地图图片长度
+			</td>
+			<td class="td2">
+				<input type="number" class="picHeight_inp" id="picHeight" name="picHeight" value="${requestScope.scenicDistrict.picHeight }" placeholder="请输入地图图片长度"/>px
+			</td>
+		  </tr>
+		  <tr>
+			<td class="td1" align="right">
+				景区介绍
+			</td>
+			<td class="td2">
+				<textarea rows="8" cols="50" id="introduce" name="introduce" placeholder="请输入景区介绍" onfocus="focusIntroduce()" onblur="checkIntroduce()">${requestScope.scenicDistrict.introduce }</textarea>
+			</td>
+			<td class="td1" align="right">
+				排序
+			</td>
+			<td class="td2">
+				<input type="number" class="sort_inp" id="sort" name="sort" value="${requestScope.scenicDistrict.sort }" placeholder="请输入排序"/>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="td1" align="right">
+				创建时间
+			</td>
+			<td class="td2">
+				${requestScope.scenicDistrict.createTime }
+			</td>
+			<td class="td1" align="right">
+				修改时间
+			</td>
+			<td class="td2">
+				${requestScope.scenicDistrict.modifyTime }
 			</td>
 		  </tr>
 		</table>
+		</form>
 	</div>
 	<%@include file="../../foot.jsp"%>
 	</div>

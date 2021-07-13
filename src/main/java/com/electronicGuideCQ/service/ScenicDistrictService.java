@@ -12,4 +12,6 @@ public interface ScenicDistrictService {
 
 	ScenicDistrict selectById(String id);
 
+	int edit(ScenicDistrict scenicDistrict);
+
 }
