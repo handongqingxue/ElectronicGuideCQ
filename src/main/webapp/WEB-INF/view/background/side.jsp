@@ -140,7 +140,7 @@
 					<div class="line_div"></div>
 					<li class="layui-nav-item">
 						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>background/capital/flowRec/list">
+						<a href="<%=basePath%>background/scenicDistrict/scenicDistrict/list">
 							&nbsp;&nbsp;&nbsp;景区查询
 						</a>
 					</li>
