@@ -21,6 +21,15 @@ public class ScenicDistrictController {
 	@Autowired
 	private ScenicDistrictService scenicDistrictService;
 	public static final String MODULE_NAME="/background/scenicDistrict";
+
+	@RequestMapping(value="/scenicDistrict/edit")
+	public String goScenicDistrictEdit(HttpServletRequest request) {
+		
+		ScenicDistrict sd = scenicDistrictService.selectById(request.getParameter("id"));
+		request.setAttribute("scenicDistrict", sd);
+		
+		return MODULE_NAME+"/scenicDistrict/edit";
+	}
 	
 	@RequestMapping(value="/scenicDistrict/list")
 	public String goScenicDistrictList(HttpServletRequest request) {

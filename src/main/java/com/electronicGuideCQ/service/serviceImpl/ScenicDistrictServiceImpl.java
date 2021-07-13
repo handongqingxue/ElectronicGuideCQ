@@ -27,4 +27,10 @@ public class ScenicDistrictServiceImpl implements ScenicDistrictService {
 		return scenicDistrictDao.selectList(name, (page-1)*rows, rows, sort, order);
 	}
 
+	@Override
+	public ScenicDistrict selectById(String id) {
+		// TODO Auto-generated method stub
+		return scenicDistrictDao.selectById(id);
+	}
+
 }

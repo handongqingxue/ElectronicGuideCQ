@@ -12,4 +12,6 @@ public interface ScenicDistrictMapper {
 
 	List<ScenicDistrict> selectList(@Param("name")String name, @Param("start")int start, @Param("rows")int rows, String sort, String order);
 
+	ScenicDistrict selectById(@Param("id")String id);
+
 }
