@@ -39,4 +39,10 @@ public class ScenicDistrictServiceImpl implements ScenicDistrictService {
 		return scenicDistrictDao.edit(scenicDistrict);
 	}
 
+	@Override
+	public int add(ScenicDistrict scenicDistrict) {
+		// TODO Auto-generated method stub
+		return scenicDistrictDao.add(scenicDistrict);
+	}
+
 }

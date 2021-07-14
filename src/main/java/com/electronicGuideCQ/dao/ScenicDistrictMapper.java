@@ -16,4 +16,6 @@ public interface ScenicDistrictMapper {
 
 	int edit(ScenicDistrict scenicDistrict);
 
+	int add(ScenicDistrict scenicDistrict);
+
 }

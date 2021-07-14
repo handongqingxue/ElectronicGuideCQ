@@ -14,4 +14,6 @@ public interface ScenicDistrictService {
 
 	int edit(ScenicDistrict scenicDistrict);
 
+	int add(ScenicDistrict scenicDistrict);
+
 }

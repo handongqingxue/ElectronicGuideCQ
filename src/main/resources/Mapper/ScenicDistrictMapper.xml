@@ -19,6 +19,76 @@
  	<select id="selectById" resultType="com.electronicGuideCQ.entity.ScenicDistrict">
  		select * from scenic_district where id=#{id}
  	</select>
+ 	<insert id="add" parameterType="com.electronicGuideCQ.entity.ScenicDistrict">
+ 		insert into scenic_district
+ 		<trim prefix="(" suffix=")" suffixOverrides=",">
+ 			<if test="name!=null">
+ 				name,
+ 			</if>
+ 			<if test="address!=null">
+ 				address,
+ 			</if>
+ 			<if test="qrcodeUrl!=null">
+ 				qrcodeUrl,
+ 			</if>
+ 			<if test="mapUrl!=null">
+ 				mapUrl,
+ 			</if>
+ 			<if test="mapWidth!=null">
+ 				mapWidth,
+ 			</if>
+ 			<if test="mapHeight!=null">
+ 				mapHeight,
+ 			</if>
+ 			<if test="picWidth!=null">
+ 				picWidth,
+ 			</if>
+ 			<if test="picHeight!=null">
+ 				picHeight,
+ 			</if>
+ 			<if test="introduce!=null">
+ 				introduce,
+ 			</if>
+ 				createTime,
+ 			<if test="sort!=null">
+ 				sort,
+ 			</if>
+ 		</trim>
+ 		values
+ 		<trim prefix="(" suffix=")" suffixOverrides=",">
+ 			<if test="name!=null">
+ 				#{name},
+ 			</if>
+ 			<if test="address!=null">
+ 				#{address},
+ 			</if>
+ 			<if test="qrcodeUrl!=null">
+ 				#{qrcodeUrl},
+ 			</if>
+ 			<if test="mapUrl!=null">
+ 				#{mapUrl},
+ 			</if>
+ 			<if test="mapWidth!=null">
+ 				#{mapWidth},
+ 			</if>
+ 			<if test="mapHeight!=null">
+ 				#{mapHeight},
+ 			</if>
+ 			<if test="picWidth!=null">
+ 				#{picWidth},
+ 			</if>
+ 			<if test="picHeight!=null">
+ 				#{picHeight},
+ 			</if>
+ 			<if test="introduce!=null">
+ 				#{introduce},
+ 			</if>
+ 				now(),
+ 			<if test="sort!=null">
+ 				#{sort},
+ 			</if>
+ 		</trim>
+ 	</insert>
  	<update id="edit">
 		update scenic_district set
 		<trim suffixOverrides=",">

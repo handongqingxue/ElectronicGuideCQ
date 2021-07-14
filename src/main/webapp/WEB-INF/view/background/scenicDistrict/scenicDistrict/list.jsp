@@ -28,6 +28,7 @@
 var scenicDistrictPath='<%=basePath%>'+"background/scenicDistrict/";
 $(function(){
 	initSearchLB();
+	initAddLB();
 	initTab1();
 });
 
@@ -37,6 +38,15 @@ function initSearchLB(){
 		onClick:function(){
 			var name=$("#toolbar #name").val();
 			tab1.datagrid("load",{name:name});
+		}
+	});
+}
+
+function initAddLB(){
+	$("#add_but").linkbutton({
+		iconCls:"icon-add",
+		onClick:function(){
+			location.href=scenicDistrictPath+"scenicDistrict/add";
 		}
 	});
 }
@@ -91,6 +101,7 @@ function setFitWidthInParent(o){
 			<span class="name_span">景区名称：</span>
 			<input type="text" class="name_inp" id="name" placeholder="请输入景区名称"/>
 			<a class="search_but" id="search_but">查询</a>
+			<a id="add_but">添加</a>
 		</div>
 		<table id="tab1">
 		</table>
