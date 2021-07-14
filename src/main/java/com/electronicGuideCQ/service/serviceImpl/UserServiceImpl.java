@@ -35,4 +35,17 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.edit(user);
 	}
+
+	@Override
+	public boolean checkUserNameExist(String userName) {
+		// TODO Auto-generated method stub
+		int count=userDao.checkUserNameExist(userName);
+		return count>0?true:false;
+	}
+
+	@Override
+	public int add(User user) {
+		// TODO Auto-generated method stub
+		return userDao.add(user);
+	}
 }

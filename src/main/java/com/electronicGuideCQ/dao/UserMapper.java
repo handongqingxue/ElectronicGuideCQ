@@ -13,4 +13,8 @@ public interface UserMapper {
 	public int updatePwdById(@Param("password")String password, @Param("id")Integer id);
 
 	int edit(User user);
+
+	public int checkUserNameExist(@Param("userName")String userName);
+
+	public int add(User user);
 }

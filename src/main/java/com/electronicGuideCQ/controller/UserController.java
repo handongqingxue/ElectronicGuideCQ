@@ -84,7 +84,7 @@ public class UserController {
 					String folder=null;
 					switch (i) {
 					case 0:
-						folder="UserHeadImg";
+						folder="UserHead";
 						break;
 					}
 					jsonStr = FileUploadUtils.appUploadContentImg(request,fileArr[i],folder);
@@ -108,7 +108,7 @@ public class UserController {
 			}
 			else {
 				plan.setStatus(1);
-				plan.setMsg("用户信息已编辑，等待审核！");
+				plan.setMsg("用户信息已编辑，重新登录生效！是否重新登录？");
 				json=JsonUtil.getJsonFromObject(plan);
 			}
 		} catch (Exception e) {

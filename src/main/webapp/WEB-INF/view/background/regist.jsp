@@ -9,13 +9,13 @@
 <link rel="stylesheet" href="<%=basePath %>resource/css/background/regist.css"/>
 <script type="text/javascript" src="<%=basePath %>resource/js/MD5.js"></script>
 <script type="text/javascript">
-var scenicDistrictPath='<%=basePath%>'+"background/scenicDistrict/";
+var backgroundPath='<%=basePath%>'+"background/";
 $(function(){
 	initSceDisCBB();
 });
 
 function initSceDisCBB(){
-	$.post(scenicDistrictPath+"selectCBBList",
+	$.post(backgroundPath+"selectSceDisCBBList",
 		function(result){
 			if(result.message=="ok"){
 				var sceDisList=result.data;
@@ -27,6 +27,172 @@ function initSceDisCBB(){
 			}
 		}
 	,"json");
+}
+
+function focusUserName(){
+	var userName = $("#userName").val();
+	if(userName=="用户名不能为空"||userName=="用户名已注册"){
+		$("#userName").val("");
+		$("#userName").css("color", "#555555");
+	}
+}
+
+//验证用户名
+function checkUserName(){
+	var flag=false;
+	var userName = $("#userName").val();
+	if(userName==null||userName==""||userName=="用户名不能为空"){
+		$("#userName").css("color","#E15748");
+    	$("#userName").val("用户名不能为空");
+    	flag=false;
+	}
+	else if(userName=="用户名已注册"){
+		$("#userName").css("color","#E15748");
+    	$("#userName").val("用户名已注册");
+    	flag=false;
+	}
+	else{
+		$.ajaxSetup({async:false});
+		$.post(backgroundPath+"checkUserNameExist",
+			{userName:userName},
+			function(data){
+				if(data.status=="ok"){
+					flag=true;
+				}
+				else{
+					$("#userName").css("color","#E15748");
+			    	$("#userName").val(data.message);
+			    	flag=false;
+				}
+			}
+		,"json");
+	}
+	return flag;
+}
+
+function checkPassword(){
+	var password=$("#password").val();
+	if(password==null||password==""||password=="请输入密码"){
+		alert("请输入密码");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkPassword1(){
+	var password=$("#password").val();
+	var password1=$("#password1").val();
+	if(password1==null||password1==""||password1=="请输入确认密码"){
+		alert("请输入确认密码");
+		return false;
+	}
+	if(password!=password1){
+		alert("两次密码不一致");
+		return false;
+	}
+	else
+		return true;
+}
+
+function focusNickName(){
+	var nickName = $("#nickName").val();
+	if(nickName=="昵称不能为空"){
+		$("#nickName").val("");
+		$("#nickName").css("color", "#555555");
+	}
+}
+
+//验证昵称
+function checkNickName(){
+	var nickName = $("#nickName").val();
+	if(nickName==null||nickName==""||nickName=="昵称不能为空"){
+		$("#nickName").css("color","#E15748");
+    	$("#nickName").val("昵称不能为空");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkSceDisId(){
+	var sceDisId = $("#sceDis_cbb").val();
+	if(sceDisId==null||sceDisId==""){
+    	alert("请选择所属景区");
+    	return false;
+	}
+	else
+		return true;
+}
+
+function checkForm(){
+	if(checkUserName()){
+		if(checkPassword()){
+			if(checkPassword1()){
+				if(checkNickName()){
+					if(checkSceDisId()){
+						addUser();
+					}
+				}
+			}
+		}
+	}
+}
+
+function addUser(){
+	$("#pwd_hid").val(MD5($("#password").val()).toUpperCase());
+	var formData = new FormData($("#form1")[0]);
+	$.ajax({
+		type:"post",
+		url:backgroundPath+"addUser",
+		dataType: "json",
+		data:formData,
+		cache: false,
+		processData: false,
+		contentType: false,
+		success: function (data){
+			if(data.status==1){
+				alert(data.msg);
+				location.href=backgroundPath+"/background/login";
+			}
+			else{
+				alert(data.msg);
+			}
+		}
+	});
+}
+
+function reset(){
+	$("#userName").val("");
+	$("#password").val("");
+	$("#password1").val("");
+	$("#nickName").val("");
+}
+
+function uploadHeadImgUrl(){
+	document.getElementById("headImgUrl_inp").click();
+}
+
+function showHeadImgUrl(obj){
+	var file = $(obj);
+    var fileObj = file[0];
+    var windowURL = window.URL || window.webkitURL;
+    var dataURL;
+    var $img = $("#headImgUrl_img");
+
+    if (fileObj && fileObj.files && fileObj.files[0]) {
+        dataURL = windowURL.createObjectURL(fileObj.files[0]);
+        $img.attr("src", dataURL);
+    } else {
+        dataURL = $file.val();
+        var imgObj = document.getElementById("preview");
+        // 两个坑:
+        // 1、在设置filter属性时，元素必须已经存在在DOM树中，动态创建的Node，也需要在设置属性前加入到DOM中，先设置属性在加入，无效；
+        // 2、src属性需要像下面的方式添加，上面的两种方式添加，无效；
+        imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+        imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+
+    }
 }
 </script>
 </head>

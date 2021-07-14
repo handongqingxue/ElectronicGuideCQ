@@ -144,11 +144,20 @@ function editUser(){
 		contentType: false,
 		success: function (data){
 			if(data.status==1){
-				alert(data.msg);
-				location.href=path+"background/exit";
+				$.messager.defaults.ok = "是";
+			    $.messager.defaults.cancel = "否";
+			    $.messager.defaults.width = 350;//更改消息框宽度
+			    $.messager.confirm(
+			    	"提示",
+			    	data.msg
+			        ,function(r){    
+			            if (r){    
+			            	location.href=path+"background/exit";
+			            }
+			        }); 
 			}
 			else{
-				alert(data.msg);
+				$.messager.alert("提示",data.msg,"warning");
 			}
 		}
 	});

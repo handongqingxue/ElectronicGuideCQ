@@ -20,6 +20,48 @@
 	<update id="updatePwdById">
 		update user set password=#{password} where id=#{id}
 	</update>
+	<insert id="add">
+ 		insert into user
+ 		<trim prefix="(" suffix=")" suffixOverrides=",">
+ 			<if test="userName!=null">
+ 				userName,
+ 			</if>
+ 			<if test="password!=null">
+ 				password,
+ 			</if>
+ 			<if test="nickName!=null">
+ 				nickName,
+ 			</if>
+ 			<if test="headImgUrl!=null">
+ 				headImgUrl,
+ 			</if>
+ 				createTime,
+ 				role,
+ 			<if test="sceDisId!=null">
+ 				sceDisId,
+ 			</if>
+ 		</trim>
+ 		values
+ 		<trim prefix="(" suffix=")" suffixOverrides=",">
+ 			<if test="userName!=null">
+ 				#{userName},
+ 			</if>
+ 			<if test="password!=null">
+ 				#{password},
+ 			</if>
+ 			<if test="nickName!=null">
+ 				#{nickName},
+ 			</if>
+ 			<if test="headImgUrl!=null">
+ 				#{headImgUrl},
+ 			</if>
+ 				now(),
+ 				1,
+ 			<if test="sceDisId!=null">
+ 				#{sceDisId},
+ 			</if>
+ 		</trim>
+ 	</insert>
 	<update id="edit">
 		update user set
 		<trim suffixOverrides=",">
@@ -29,8 +71,10 @@
 			<if test="headImgUrl!=null">
 				headImgUrl=#{headImgUrl},
 			</if>
-				`check`=0
 		</trim>
 		where id=#{id}
 	</update>
+ 	<select id="checkUserNameExist" resultType="java.lang.Integer">
+ 		select count(*) from user where userName=#{userName}
+ 	</select>
 </mapper>

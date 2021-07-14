@@ -21,7 +21,7 @@ public class UtilServiceImpl implements UtilService {
     private Producer captchaProducer = null;
 
 	@Override
-	public void getKaptchaImageByMerchant(HttpSession session, String identity, HttpServletResponse response) {
+	public void getKaptchaImage(HttpSession session, String identity, HttpServletResponse response) {
 		 response.setDateHeader("Expires", 0);  //设置http头，告诉客户端不要缓存此图像
 	        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 	        response.addHeader("Cache-Control", "post-check=0, pre-check=0");

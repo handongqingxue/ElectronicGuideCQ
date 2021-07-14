@@ -60,12 +60,6 @@ public class User {
 	public void setSceDisId(Integer sceDisId) {
 		this.sceDisId = sceDisId;
 	}
-	public Integer getCheck() {
-		return check;
-	}
-	public void setCheck(Integer check) {
-		this.check = check;
-	}
 	private String userName;//”√ªß’À∫≈
 	private String password;//√‹¬Î
 	private String nickName;
@@ -73,5 +67,4 @@ public class User {
 	private String createTime;
 	private Integer role;
 	private Integer sceDisId;
-	private Integer check;
 }
