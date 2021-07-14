@@ -47,6 +47,15 @@ public class ScenicDistrictController {
 
 		return MODULE_NAME+"/scenicDistrict/list";
 	}
+
+	@RequestMapping(value="/scenicDistrict/detail")
+	public String goScenicDistrictDetail(HttpServletRequest request) {
+		
+		ScenicDistrict sd = scenicDistrictService.selectById(request.getParameter("id"));
+		request.setAttribute("scenicDistrict", sd);
+		
+		return MODULE_NAME+"/scenicDistrict/detail";
+	}
 	
 	@RequestMapping(value="/selectList")
 	@ResponseBody
