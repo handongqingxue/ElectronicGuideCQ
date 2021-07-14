@@ -18,4 +18,6 @@ public interface ScenicDistrictMapper {
 
 	int add(ScenicDistrict scenicDistrict);
 
+	List<ScenicDistrict> selectCBBList();
+
 }

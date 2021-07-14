@@ -45,4 +45,10 @@ public class ScenicDistrictServiceImpl implements ScenicDistrictService {
 		return scenicDistrictDao.add(scenicDistrict);
 	}
 
+	@Override
+	public List<ScenicDistrict> selectList() {
+		// TODO Auto-generated method stub
+		return scenicDistrictDao.selectCBBList();
+	}
+
 }

@@ -16,4 +16,6 @@ public interface ScenicDistrictService {
 
 	int add(ScenicDistrict scenicDistrict);
 
+	List<ScenicDistrict> selectList();
+
 }

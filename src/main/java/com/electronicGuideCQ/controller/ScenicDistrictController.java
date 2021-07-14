@@ -186,4 +186,21 @@ public class ScenicDistrictController {
 		}
 		return json;
 	}
+	
+	@RequestMapping(value="/selectCBBList")
+	@ResponseBody
+	public Map<String, Object> selectCBBList() {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		List<ScenicDistrict> sdList=scenicDistrictService.selectList();
+
+		if(sdList.size()==0) {
+			jsonMap.put("message", "no");
+		}
+		else {
+			jsonMap.put("message", "ok");
+			jsonMap.put("data", sdList);
+		}
+		return jsonMap;
+	}
 }

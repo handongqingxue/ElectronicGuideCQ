@@ -16,6 +16,9 @@
 		</if>
  		 order by sort limit #{start},#{rows}
  	</select>
+ 	<select id="selectCBBList" resultType="com.electronicGuideCQ.entity.ScenicDistrict">
+ 		select id,name from scenic_district order by sort
+ 	</select>
  	<select id="selectById" resultType="com.electronicGuideCQ.entity.ScenicDistrict">
  		select * from scenic_district where id=#{id}
  	</select>

@@ -26,7 +26,7 @@
 			<value>
 				/background/regist=anon
 				/background/login/captcha=anon
-				/vip/*=anon
+				/background/scenicDistrict/selectCBBList=anon
 				/JSSDK/*=anon
 				/resource/**=anon
 				/**=authc
