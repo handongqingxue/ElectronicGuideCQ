@@ -34,10 +34,10 @@ public class UserController {
 		return MODULE_NAME+"/info/info";
 	}
 	
-	@RequestMapping(value="/list/list")
-	public String goListList(HttpServletRequest request) {
+	@RequestMapping(value="/all/list")
+	public String goAllList(HttpServletRequest request) {
 
-		return MODULE_NAME+"/list/list";
+		return MODULE_NAME+"/all/list";
 	}
 	
 	@RequestMapping(value="/checkPassword")
@@ -127,11 +127,11 @@ public class UserController {
 	
 	@RequestMapping(value="/selectList")
 	@ResponseBody
-	public Map<String, Object> selectList(String userName,String sceDisName,int page,int rows,String sort,String order) {
+	public Map<String, Object> selectList(String userName,String sceDisName,Integer check,int page,int rows,String sort,String order) {
 		
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		int count=userService.selectForInt(userName,sceDisName,User.GUAN_LI_YUAN);
-		List<User> userList=userService.selectList(userName,sceDisName,User.GUAN_LI_YUAN, page, rows, sort, order);
+		int count=userService.selectForInt(userName,sceDisName,check);
+		List<User> userList=userService.selectList(userName,sceDisName,check, page, rows, sort, order);
 
 		jsonMap.put("total", count);
 		jsonMap.put("rows", userList);

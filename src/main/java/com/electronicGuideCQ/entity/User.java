@@ -2,9 +2,6 @@ package com.electronicGuideCQ.entity;
 
 public class User {
 	
-	public static final int YONG_HU=1;
-	public static final int GUAN_LI_YUAN=2;
-
 	public User(String userName,String password) {
 		this.userName=userName;
 		this.password=password;

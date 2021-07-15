@@ -20,7 +20,7 @@ public interface UserMapper {
 
 	public int add(User user);
 
-	public int selectForInt(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("role")int role);
+	public int selectForInt(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("check")Integer check);
 
-	public List<User> selectList(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("role")int role, @Param("start")int start, @Param("rows")int rows, String sort, String order);
+	public List<User> selectList(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("check")Integer check, @Param("start")int start, @Param("rows")int rows, String sort, String order);
 }

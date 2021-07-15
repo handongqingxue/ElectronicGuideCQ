@@ -12,7 +12,7 @@
 .tab1_div .toolbar{
 	height:32px;
 }
-.tab1_div .toolbar .userName_span,.tab1_div .toolbar .sceDisName_span{
+.tab1_div .toolbar .userName_span,.tab1_div .toolbar .sceDisName_span,.tab1_div .toolbar .check_span{
 	margin-left: 13px;
 }
 .tab1_div .toolbar .userName_inp,.tab1_div .toolbar .sceDisName_inp{
@@ -27,9 +27,23 @@
 <script type="text/javascript">
 var userPath='<%=basePath%>'+"background/user/";
 $(function(){
+	initCheckCBB();
 	initSearchLB();
 	initTab1();
 });
+
+function initCheckCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择"});
+	data.push({"value":"0","text":"待审核"});
+	data.push({"value":"1","text":"已通过"});
+	data.push({"value":"2","text":"未通过"});
+	checkCBB=$("#check_cbb").combobox({
+		valueField:"value",
+		textField:"text",
+		data:data
+	});
+}
 
 function initSearchLB(){
 	$("#search_but").linkbutton({
@@ -37,14 +51,15 @@ function initSearchLB(){
 		onClick:function(){
 			var userName=$("#toolbar #userName").val();
 			var sceDisName=$("#toolbar #sceDisName").val();
-			tab1.datagrid("load",{userName:userName,sceDisName:sceDisName});
+			var check=checkCBB.combobox("getValue");
+			tab1.datagrid("load",{userName:userName,sceDisName:sceDisName,check:check});
 		}
 	});
 }
 
 function initTab1(){
 	tab1=$("#tab1").datagrid({
-		title:"用户查询",
+		title:"用户综合查询",
 		url:userPath+"selectList",
 		toolbar:"#toolbar",
 		width:setFitWidthInParent("body"),
@@ -71,8 +86,7 @@ function initTab1(){
             	return str;
             }},
             {field:"id",title:"操作",width:110,formatter:function(value,row){
-            	var str="<a href=\"edit?id="+value+"\">编辑</a>&nbsp;&nbsp;"
-            		+"<a href=\"detail?id="+value+"\">详情</a>";
+            	var str="<a href=\"detail?id="+value+"\">详情</a>";
             	return str;
             }}
 	    ]],
@@ -107,6 +121,8 @@ function setFitWidthInParent(o){
 			<input type="text" class="userName_inp" id="userName" placeholder="请输入用户名"/>
 			<span class="sceDisName_span">景区名称：</span>
 			<input type="text" class="sceDisName_inp" id="sceDisName" placeholder="请输入景区名称"/>
+			<span class="check_span">审核状态：</span>
+			<input id="check_cbb"/>
 			<a class="search_but" id="search_but">查询</a>
 		</div>
 		<table id="tab1">

@@ -85,8 +85,8 @@
 		<if test="sceDisName!=null&amp;sceDisName!=''">
 			and s.name like'%${sceDisName}%'
 		</if>
-		<if test="role!=null&amp;role!=''">
-			and u.role=#{role}
+		<if test="check!=null&amp;check!=''">
+			and u.check=#{check}
 		</if>
  	</select>
  	<select id="selectList" resultType="com.electronicGuideCQ.entity.User">
@@ -97,8 +97,8 @@
 		<if test="sceDisName!=null&amp;sceDisName!=''">
 			and s.name like'%${sceDisName}%'
 		</if>
-		<if test="role!=null&amp;role!=''">
-			and u.role=#{role}
+		<if test="check!=null&amp;check!=''">
+			and u.check=#{check}
 		</if>
  		 limit #{start},#{rows}
  	</select>

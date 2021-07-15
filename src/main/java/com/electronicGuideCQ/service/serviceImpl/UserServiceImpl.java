@@ -52,14 +52,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int selectForInt(String userName, String sceDisName, int role) {
+	public int selectForInt(String userName, String sceDisName, Integer check) {
 		// TODO Auto-generated method stub
-		return userDao.selectForInt(userName,sceDisName,role);
+		return userDao.selectForInt(userName,sceDisName,check);
 	}
 
 	@Override
-	public List<User> selectList(String userName, String sceDisName, int role, int page, int rows, String sort, String order) {
+	public List<User> selectList(String userName, String sceDisName, Integer check, int page, int rows, String sort, String order) {
 		// TODO Auto-generated method stub
-		return userDao.selectList(userName,sceDisName,role,(page-1)*rows, rows, sort, order);
+		return userDao.selectList(userName,sceDisName,check,(page-1)*rows, rows, sort, order);
 	}
 }

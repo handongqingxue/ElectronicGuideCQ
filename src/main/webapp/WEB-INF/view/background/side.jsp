@@ -111,8 +111,8 @@
 					<div class="line_div"></div>
 					<li class="layui-nav-item">
 						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>background/user/list/list">
-							&nbsp;&nbsp;&nbsp;用户列表
+						<a href="<%=basePath%>background/user/all/list">
+							&nbsp;&nbsp;&nbsp;综合查询
 						</a>
 					</li>
 					</shiro:hasRole>

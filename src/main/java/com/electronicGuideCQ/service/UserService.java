@@ -16,7 +16,7 @@ public interface UserService {
 
 	int add(User user);
 
-	int selectForInt(String userName, String sceDisName, int role);
+	int selectForInt(String userName, String sceDisName, Integer check);
 
-	List<User> selectList(String userName, String sceDisName, int page, int role, int rows, String sort, String order);
+	List<User> selectList(String userName, String sceDisName, Integer check, int page, int rows, String sort, String order);
 }
