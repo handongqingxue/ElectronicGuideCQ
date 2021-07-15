@@ -131,7 +131,11 @@ function checkEdit(){
 					if(checkPicWidth()){
 						if(checkPicHeight()){
 							if(checkIntroduce()){
-								editScenicDistrict();
+								if(checkServerName()){
+									if(checkServerPort()){
+										editScenicDistrict();
+									}
+								}
 							}
 						}
 					}
@@ -267,6 +271,37 @@ function checkIntroduce(){
 		return true;
 }
 
+function focusServerName(){
+	var serverName = $("#serverName").val();
+	if(serverName=="服务器ip不能为空"){
+		$("#serverName").val("");
+		$("#serverName").css("color", "#555555");
+	}
+}
+
+//验证服务器ip
+function checkServerName(){
+	var serverName = $("#serverName").val();
+	if(serverName==null||serverName==""||serverName=="服务器ip不能为空"){
+		$("#serverName").css("color","#E15748");
+    	$("#serverName").val("服务器ip不能为空");
+    	return false;
+	}
+	else
+		return true;
+}
+
+//验证服务器端口号
+function checkServerPort(){
+	var serverPort = $("#serverPort").val();
+	if(serverPort==null||serverPort==""){
+	  	alert("请输入服务器端口号");
+	  	return false;
+	}
+	else
+		return true;
+}
+
 function uploadQrcodeUrl(){
 	document.getElementById("qrcodeUrl_file").click();
 }
@@ -326,7 +361,7 @@ function setFitWidthInParent(parent,self){
 		space=205;
 		break;
 	case "edit_div":
-		space=340;
+		space=323;
 		break;
 	case "edit_div_table":
 	case "panel_window":
@@ -420,6 +455,20 @@ function setFitWidthInParent(parent,self){
 			</td>
 			<td class="td2">
 				<input type="number" class="sort_inp" id="sort" name="sort" value="${requestScope.scenicDistrict.sort }" placeholder="请输入排序"/>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="td1" align="right">
+				服务器ip
+			</td>
+			<td class="td2">
+				<input type="text" class="serverName_inp" id="serverName" name="serverName" value="${requestScope.scenicDistrict.serverName }" placeholder="请输入服务器ip" onfocus="focusServerName()" onblur="checkServerName()"/>
+			</td>
+			<td class="td1" align="right">
+				服务器端口号
+			</td>
+			<td class="td2">
+				<input type="number" class="serverPort_inp" id="serverPort" name="serverPort" value="${requestScope.scenicDistrict.serverPort }" placeholder="请输入服务器端口号"/>
 			</td>
 		  </tr>
 		  <tr>

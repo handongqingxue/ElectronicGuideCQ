@@ -1,6 +1,9 @@
 package com.electronicGuideCQ.entity;
 
 public class User {
+	
+	public static final int YONG_HU=1;
+	public static final int GUAN_LI_YUAN=2;
 
 	public User(String userName,String password) {
 		this.userName=userName;
@@ -60,6 +63,18 @@ public class User {
 	public void setSceDisId(Integer sceDisId) {
 		this.sceDisId = sceDisId;
 	}
+	public String getSceDisName() {
+		return sceDisName;
+	}
+	public void setSceDisName(String sceDisName) {
+		this.sceDisName = sceDisName;
+	}
+	public Integer getCheck() {
+		return check;
+	}
+	public void setCheck(Integer check) {
+		this.check = check;
+	}
 	private String userName;//”√ªß’À∫≈
 	private String password;//√‹¬Î
 	private String nickName;
@@ -67,4 +82,6 @@ public class User {
 	private String createTime;
 	private Integer role;
 	private Integer sceDisId;
+	private String sceDisName;
+	private Integer check;
 }

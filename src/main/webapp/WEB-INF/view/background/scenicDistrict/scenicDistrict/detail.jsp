@@ -51,7 +51,7 @@ function initDialogPosition(){
 function initDetailDialog(){
 	dialogTop+=20;
 	$("#detail_div").dialog({
-		title:"行业信息",
+		title:"景区信息",
 		width:setFitWidthInParent("body","detail_div"),
 		height:730,
 		top:dialogTop,
@@ -94,7 +94,7 @@ function setFitWidthInParent(parent,self){
 		space=205;
 		break;
 	case "detail_div":
-		space=340;
+		space=323;
 		break;
 	case "detail_div_table":
 	case "panel_window":
@@ -110,7 +110,7 @@ function setFitWidthInParent(parent,self){
 <div class="layui-layout layui-layout-admin">
 	<%@include file="../../side.jsp"%>
 	<div class="center_con_div" id="center_con_div">
-		<div class="page_location_div">行业详情</div>
+		<div class="page_location_div">景区详情</div>
 		
 		<div id="detail_div">
 			<input type="hidden" name="id" value="${requestScope.scenicDistrict.id }"/>
@@ -183,6 +183,20 @@ function setFitWidthInParent(parent,self){
 				</td>
 				<td class="td2">
 					<span>${requestScope.scenicDistrict.sort }</span>
+				</td>
+			  </tr>
+			  <tr>
+				<td class="td1" align="right">
+					服务器ip
+				</td>
+				<td class="td2">
+					<span>${requestScope.scenicDistrict.serverName }</span>
+				</td>
+				<td class="td1" align="right">
+					服务器端口号
+				</td>
+				<td class="td2">
+					<span>${requestScope.scenicDistrict.serverPort }</span>
 				</td>
 			  </tr>
 			  <tr>

@@ -1,5 +1,7 @@
 package com.electronicGuideCQ.service.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +49,17 @@ public class UserServiceImpl implements UserService {
 	public int add(User user) {
 		// TODO Auto-generated method stub
 		return userDao.add(user);
+	}
+
+	@Override
+	public int selectForInt(String userName, String sceDisName, int role) {
+		// TODO Auto-generated method stub
+		return userDao.selectForInt(userName,sceDisName,role);
+	}
+
+	@Override
+	public List<User> selectList(String userName, String sceDisName, int role, int page, int rows, String sort, String order) {
+		// TODO Auto-generated method stub
+		return userDao.selectList(userName,sceDisName,role,(page-1)*rows, rows, sort, order);
 	}
 }

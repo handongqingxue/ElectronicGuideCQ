@@ -77,4 +77,29 @@
  	<select id="checkUserNameExist" resultType="java.lang.Integer">
  		select count(*) from user where userName=#{userName}
  	</select>
+ 	<select id="selectForInt" resultType="java.lang.Integer">
+ 		select count(*) from user u,scenic_district s where u.sceDisId=s.id
+		<if test="userName!=null&amp;userName!=''">
+			and u.userName like'%${userName}%'
+		</if>
+		<if test="sceDisName!=null&amp;sceDisName!=''">
+			and s.name like'%${sceDisName}%'
+		</if>
+		<if test="role!=null&amp;role!=''">
+			and u.role=#{role}
+		</if>
+ 	</select>
+ 	<select id="selectList" resultType="com.electronicGuideCQ.entity.User">
+ 		select u.*,s.name sceDisName from user u,scenic_district s where u.sceDisId=s.id and u.userName!='admin'
+		<if test="userName!=null&amp;userName!=''">
+			and u.userName like'%${userName}%'
+		</if>
+		<if test="sceDisName!=null&amp;sceDisName!=''">
+			and s.name like'%${sceDisName}%'
+		</if>
+		<if test="role!=null&amp;role!=''">
+			and u.role=#{role}
+		</if>
+ 		 limit #{start},#{rows}
+ 	</select>
 </mapper>

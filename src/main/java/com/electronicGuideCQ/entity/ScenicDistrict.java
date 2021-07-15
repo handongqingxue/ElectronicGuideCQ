@@ -63,6 +63,18 @@ public class ScenicDistrict {
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
+	public String getServerName() {
+		return serverName;
+	}
+	public void setServerName(String serverName) {
+		this.serverName = serverName;
+	}
+	public String getServerPort() {
+		return serverPort;
+	}
+	public void setServerPort(String serverPort) {
+		this.serverPort = serverPort;
+	}
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -90,6 +102,8 @@ public class ScenicDistrict {
 	private Float picWidth;
 	private Float picHeight;
 	private String introduce;
+	private String serverName;
+	private String serverPort;
 	private String createTime;
 	private String modifyTime;
 	private Integer sort;

@@ -1,6 +1,7 @@
 package com.electronicGuideCQ.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +29,15 @@ public class UserController {
 	public static final String MODULE_NAME="/background/user";
 	
 	@RequestMapping(value="/info/info")
-	public String goUserInfoInfo(HttpServletRequest request) {
+	public String goInfoInfo(HttpServletRequest request) {
 
 		return MODULE_NAME+"/info/info";
+	}
+	
+	@RequestMapping(value="/list/list")
+	public String goListList(HttpServletRequest request) {
+
+		return MODULE_NAME+"/list/list";
 	}
 	
 	@RequestMapping(value="/checkPassword")
@@ -116,5 +123,19 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return json;
+	}
+	
+	@RequestMapping(value="/selectList")
+	@ResponseBody
+	public Map<String, Object> selectList(String userName,String sceDisName,int page,int rows,String sort,String order) {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		int count=userService.selectForInt(userName,sceDisName,User.GUAN_LI_YUAN);
+		List<User> userList=userService.selectList(userName,sceDisName,User.GUAN_LI_YUAN, page, rows, sort, order);
+
+		jsonMap.put("total", count);
+		jsonMap.put("rows", userList);
+			
+		return jsonMap;
 	}
 }

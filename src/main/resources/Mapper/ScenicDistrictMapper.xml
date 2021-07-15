@@ -56,6 +56,12 @@
  			<if test="sort!=null">
  				sort,
  			</if>
+ 			<if test="serverName!=null">
+ 				serverName,
+ 			</if>
+ 			<if test="serverPort!=null">
+ 				serverPort,
+ 			</if>
  		</trim>
  		values
  		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -89,6 +95,12 @@
  				now(),
  			<if test="sort!=null">
  				#{sort},
+ 			</if>
+ 			<if test="serverName!=null">
+ 				#{serverName},
+ 			</if>
+ 			<if test="serverPort!=null">
+ 				#{serverPort},
  			</if>
  		</trim>
  	</insert>
@@ -125,6 +137,12 @@
 				modifyTime=now(),
 			<if test="sort!=null">
 				sort=#{sort},
+			</if>
+			<if test="serverName!=null">
+				serverName=#{serverName},
+			</if>
+			<if test="serverPort!=null">
+				serverPort=#{serverPort},
 			</if>
 		</trim>
 		where id=#{id}

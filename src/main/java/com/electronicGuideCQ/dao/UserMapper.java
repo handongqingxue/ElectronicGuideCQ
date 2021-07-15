@@ -1,5 +1,7 @@
 package com.electronicGuideCQ.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.electronicGuideCQ.entity.*;
@@ -17,4 +19,8 @@ public interface UserMapper {
 	public int checkUserNameExist(@Param("userName")String userName);
 
 	public int add(User user);
+
+	public int selectForInt(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("role")int role);
+
+	public List<User> selectList(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("role")int role, @Param("start")int start, @Param("rows")int rows, String sort, String order);
 }
