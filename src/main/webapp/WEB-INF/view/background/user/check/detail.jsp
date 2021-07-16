@@ -49,7 +49,9 @@
 	margin-left: 30px;
 }
 .yhsh_div .close_span{
-	float: right;margin-right: 30px;cursor: pointer;
+	float: right;
+	margin-right: 30px;
+	cursor: pointer;
 }
 .yhsh_dialog_div{
 	width: 500px;
@@ -57,10 +59,23 @@
 	position: absolute;
 }
 .yhsh_div .location_div{
-	width: 100%;height: 50px;line-height: 50px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
 }
 .yhsh_div .location_span{
 	margin-left: 30px;
+}
+.yhsh_jbsxz_dialog_div .title_div{
+	height:50px;
+	line-height:50px;
+	margin-left: 20px;
+}
+.yhsh_jbsxz_dialog_div .content_ta{
+	width: 380px;
+	height:225px;
+	margin-left: 20px;
+	font-size:15px;
 }
 
 .headImgUrl_img{
@@ -260,9 +275,9 @@ function setFitWidthInParent(parent,self){
 				<div class="location_div">
 					<span class="location_span">用户审核-用户详情-审核</span>
 				</div>
-				<div id="yhsh_jbsxz_dialog_div">
-					 <div style="height:50px;line-height:50px;margin-left: 20px;">不通过原因</div>
-					<textarea rows="5" cols="10" id="content" style="width: 380px;height:225px;margin-left: 20px;font-size:15px;"></textarea>
+				<div class="yhsh_jbsxz_dialog_div" id="yhsh_jbsxz_dialog_div">
+					 <div class="title_div">不通过原因</div>
+					<textarea rows="5" cols="10" class="content_ta" id="content"></textarea>
 				</div>
 			</div>
 		</div>
