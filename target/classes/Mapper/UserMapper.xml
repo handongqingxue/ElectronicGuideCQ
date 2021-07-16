@@ -77,8 +77,27 @@
  	<select id="checkUserNameExist" resultType="java.lang.Integer">
  		select count(*) from user where userName=#{userName}
  	</select>
+ 	<select id="selectCheckForInt" resultType="java.lang.Integer">
+ 		select count(*) from user u,scenic_district s where u.sceDisId=s.id and u.check!=${@com.electronicGuideCQ.entity.User@SHEN_HE_TONG_GUO} and u.userName!='admin'
+		<if test="userName!=null&amp;userName!=''">
+			and u.userName like'%${userName}%'
+		</if>
+		<if test="sceDisName!=null&amp;sceDisName!=''">
+			and s.name like'%${sceDisName}%'
+		</if>
+ 	</select>
+ 	<select id="selectCheckList" resultType="com.electronicGuideCQ.entity.User">
+ 		select u.*,s.name sceDisName from user u,scenic_district s where u.sceDisId=s.id and u.check!=${@com.electronicGuideCQ.entity.User@SHEN_HE_TONG_GUO} and u.userName!='admin'
+		<if test="userName!=null&amp;userName!=''">
+			and u.userName like'%${userName}%'
+		</if>
+		<if test="sceDisName!=null&amp;sceDisName!=''">
+			and s.name like'%${sceDisName}%'
+		</if>
+ 		 limit #{start},#{rows}
+ 	</select>
  	<select id="selectForInt" resultType="java.lang.Integer">
- 		select count(*) from user u,scenic_district s where u.sceDisId=s.id
+ 		select count(*) from user u,scenic_district s where u.sceDisId=s.id and u.userName!='admin'
 		<if test="userName!=null&amp;userName!=''">
 			and u.userName like'%${userName}%'
 		</if>
@@ -105,4 +124,7 @@
  	<select id="getById" resultType="com.electronicGuideCQ.entity.User">
  		select u.*,s.`name` sceDisName,s.address sceDisAddress from user u,scenic_district s where u.sceDisId=s.id and u.id=#{id}
  	</select>
+	<update id="updateCheckById">
+		update user set `check`=#{check} where id=#{id}
+	</update>
 </mapper>

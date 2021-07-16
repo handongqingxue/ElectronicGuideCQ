@@ -20,9 +20,15 @@ public interface UserMapper {
 
 	public int add(User user);
 
+	public int selectCheckForInt(@Param("userName")String userName, @Param("sceDisName")String sceDisName);
+
+	public List<User> selectCheckList(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("start")int start, @Param("rows")int rows, String sort, String order);
+
 	public int selectForInt(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("check")Integer check);
 
 	public List<User> selectList(@Param("userName")String userName, @Param("sceDisName")String sceDisName, @Param("check")Integer check, @Param("start")int start, @Param("rows")int rows, String sort, String order);
 
 	public User getById(@Param("id")Integer id);
+
+	int updateCheckById(@Param("check")Integer check, @Param("id")Integer id);
 }

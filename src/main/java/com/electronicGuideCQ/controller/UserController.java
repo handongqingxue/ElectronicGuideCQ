@@ -34,6 +34,22 @@ public class UserController {
 		return MODULE_NAME+"/info/info";
 	}
 	
+	@RequestMapping(value="/check/list")
+	public String goCheckList(HttpServletRequest request) {
+
+		return MODULE_NAME+"/check/list";
+	}
+
+	@RequestMapping(value="/check/detail")
+	public String goCheckDetail(HttpServletRequest request) {
+
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		User user = userService.getById(id);
+		request.setAttribute("user", user);
+		
+		return MODULE_NAME+"/check/detail";
+	}
+	
 	@RequestMapping(value="/all/list")
 	public String goAllList(HttpServletRequest request) {
 
@@ -135,6 +151,20 @@ public class UserController {
 		return json;
 	}
 	
+	@RequestMapping(value="/selectCheckList")
+	@ResponseBody
+	public Map<String, Object> selectCheckList(String userName,String sceDisName,int page,int rows,String sort,String order) {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		int count=userService.selectCheckForInt(userName,sceDisName);
+		List<User> userList=userService.selectCheckList(userName,sceDisName, page, rows, sort, order);
+
+		jsonMap.put("total", count);
+		jsonMap.put("rows", userList);
+			
+		return jsonMap;
+	}
+	
 	@RequestMapping(value="/selectList")
 	@ResponseBody
 	public Map<String, Object> selectList(String userName,String sceDisName,Integer check,int page,int rows,String sort,String order) {
@@ -146,6 +176,33 @@ public class UserController {
 		jsonMap.put("total", count);
 		jsonMap.put("rows", userList);
 			
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/checkById")
+	@ResponseBody
+	public Map<String, Object> checkById(Integer check,String content,Integer id) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+    	String resultStr=null;
+    	switch (check) {
+			case User.SHEN_HE_TONG_GUO:
+				resultStr="用户审核通过";
+				content="您的用户信息已审核通过，可以使用用户的功能了。";
+				break;
+			case User.SHEN_HE_BU_HE_GE:
+				resultStr="用户审核未通过";
+				break;
+		}
+		int count=userService.checkById(check,resultStr,content,id);
+        if(count==0) {
+        	jsonMap.put("status", "no");
+        	jsonMap.put("message", "审核失败！");
+        }
+        else {
+        	jsonMap.put("status", "ok");
+        	jsonMap.put("message", resultStr);
+        }
 		return jsonMap;
 	}
 }

@@ -106,6 +106,13 @@
 							&nbsp;&nbsp;&nbsp;用户信息
 						</a>
 					</li>
+					<div class="line_div"></div>
+					<li class="layui-nav-item">
+						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
+						<a href="<%=basePath%>background/user/check/list">
+							&nbsp;&nbsp;&nbsp;用户审核
+						</a>
+					</li>
 					<shiro:hasRole  name="admin">
 	  				<!--  有权限   -->
 					<div class="line_div"></div>

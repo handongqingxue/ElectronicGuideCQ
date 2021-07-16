@@ -52,6 +52,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public int selectCheckForInt(String userName, String sceDisName) {
+		// TODO Auto-generated method stub
+		return userDao.selectCheckForInt(userName,sceDisName);
+	}
+
+	@Override
+	public List<User> selectCheckList(String userName, String sceDisName, int page, int rows, String sort,
+			String order) {
+		// TODO Auto-generated method stub
+		return userDao.selectCheckList(userName,sceDisName,(page-1)*rows, rows, sort, order);
+	}
+
+	@Override
 	public int selectForInt(String userName, String sceDisName, Integer check) {
 		// TODO Auto-generated method stub
 		return userDao.selectForInt(userName,sceDisName,check);
@@ -67,5 +80,21 @@ public class UserServiceImpl implements UserService {
 	public User getById(Integer id) {
 		// TODO Auto-generated method stub
 		return userDao.getById(id);
+	}
+
+	@Override
+	public int checkById(Integer check, String resultStr, String content, Integer id) {
+		// TODO Auto-generated method stub
+		int count=userDao.updateCheckById(check,id);
+		if(count>0) {
+			/*
+			MerchantMessage mm=new MerchantMessage();
+			mm.setTitle(resultStr);
+			mm.setContent(content);
+			mm.setShopId(shopId);
+			count=merchantMessageDao.add(mm);
+			*/
+		}
+		return count;
 	}
 }
