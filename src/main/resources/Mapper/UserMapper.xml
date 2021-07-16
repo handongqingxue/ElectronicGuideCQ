@@ -102,4 +102,7 @@
 		</if>
  		 limit #{start},#{rows}
  	</select>
+ 	<select id="getById" resultType="com.electronicGuideCQ.entity.User">
+ 		select u.*,s.`name` sceDisName,s.address sceDisAddress from user u,scenic_district s where u.sceDisId=s.id and u.id=#{id}
+ 	</select>
 </mapper>

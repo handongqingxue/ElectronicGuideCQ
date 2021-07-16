@@ -39,6 +39,16 @@ public class UserController {
 
 		return MODULE_NAME+"/all/list";
 	}
+
+	@RequestMapping(value="/all/detail")
+	public String goAllDetail(HttpServletRequest request) {
+
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		User user = userService.getById(id);
+		request.setAttribute("user", user);
+		
+		return MODULE_NAME+"/all/detail";
+	}
 	
 	@RequestMapping(value="/checkPassword")
 	@ResponseBody

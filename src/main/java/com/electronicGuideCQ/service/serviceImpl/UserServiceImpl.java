@@ -62,4 +62,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.selectList(userName,sceDisName,check,(page-1)*rows, rows, sort, order);
 	}
+
+	@Override
+	public User getById(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.getById(id);
+	}
 }

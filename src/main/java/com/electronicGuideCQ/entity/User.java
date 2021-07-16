@@ -66,6 +66,13 @@ public class User {
 	public void setSceDisName(String sceDisName) {
 		this.sceDisName = sceDisName;
 	}
+	public String getSceDisAddress() {
+		return sceDisAddress;
+	}
+
+	public void setSceDisAddress(String sceDisAddress) {
+		this.sceDisAddress = sceDisAddress;
+	}
 	public Integer getCheck() {
 		return check;
 	}
@@ -80,5 +87,6 @@ public class User {
 	private Integer role;
 	private Integer sceDisId;
 	private String sceDisName;
+	private String sceDisAddress;
 	private Integer check;
 }

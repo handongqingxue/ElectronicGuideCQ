@@ -19,4 +19,6 @@ public interface UserService {
 	int selectForInt(String userName, String sceDisName, Integer check);
 
 	List<User> selectList(String userName, String sceDisName, Integer check, int page, int rows, String sort, String order);
+
+	User getById(Integer id);
 }
