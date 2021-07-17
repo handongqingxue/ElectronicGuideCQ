@@ -105,13 +105,14 @@ public class BackgroundController {
 				return JsonUtil.getJsonFromObject(plan);
 			}
 			User user=(User)SecurityUtils.getSubject().getPrincipal();
-			session.setAttribute("user", user);
 			
 			plan.setStatus(0);
 			plan.setMsg("验证通过");
 			String url=null;
-			if("admin".equals(user.getUserName()))
+			if("admin".equals(user.getUserName())) {
+				session.setAttribute("user", user);
 				url=request.getContextPath()+"/background/user/info/info";
+			}
 			else {
 				String serverPath = scenicDistrictService.getServerPathById(user.getSceDisId());
 				url=serverPath+"/background/loginFromCQ?userName="+userName+"&password="+password;
