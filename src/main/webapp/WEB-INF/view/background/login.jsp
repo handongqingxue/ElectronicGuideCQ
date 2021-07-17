@@ -98,7 +98,7 @@ body {
 <script type="text/javascript" src="<%=basePath %>resource/js/MD5.js"></script>
 <script type="text/javascript">
     //更换验证码
-    var baseUrl="${pageContext.request.contextPath}"
+    var baseUrl="${pageContext.request.contextPath}";
     $(".replace_code").bind("click",function () {
         $("#loginVCode").hide().attr('src', baseUrl+ "/background/getKaptchaImage?" + Math.floor(Math.random() * 100) ).fadeIn();
     });
@@ -123,7 +123,7 @@ body {
             	console.log(json)
             	if(json.status==0){
             		layer.msg(json.msg, {icon: 6});
-            		window.location.href=baseUrl+json.url;
+            		window.location.href=json.url;
             	}else if(json.status==1){
             		layer.alert(json.msg,{icon:5})
             	}

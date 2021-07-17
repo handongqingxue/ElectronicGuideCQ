@@ -109,7 +109,14 @@ public class BackgroundController {
 			
 			plan.setStatus(0);
 			plan.setMsg("验证通过");
-			plan.setUrl("/background/user/info/info");
+			String url=null;
+			if("admin".equals(user.getUserName()))
+				url=request.getContextPath()+"/background/user/info/info";
+			else {
+				String serverPath = scenicDistrictService.getServerPathById(user.getSceDisId());
+				url=serverPath+"/background/user/info/info";
+			}
+			plan.setUrl(url);
 			return JsonUtil.getJsonFromObject(plan);
 		}
 		plan.setStatus(1);

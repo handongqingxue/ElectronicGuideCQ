@@ -18,4 +18,6 @@ public interface ScenicDistrictService {
 
 	List<ScenicDistrict> selectList();
 
+	String getServerPathById(Integer sceDisId);
+
 }

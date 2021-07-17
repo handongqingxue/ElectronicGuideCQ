@@ -51,4 +51,19 @@ public class ScenicDistrictServiceImpl implements ScenicDistrictService {
 		return scenicDistrictDao.selectCBBList();
 	}
 
+	@Override
+	public String getServerPathById(Integer sceDisId) {
+		// TODO Auto-generated method stub
+		ScenicDistrict scenicDistrict = scenicDistrictDao.selectById(sceDisId.toString());
+		
+		StringBuilder serverPathSB=new StringBuilder();
+		serverPathSB.append("http://");
+		serverPathSB.append(scenicDistrict.getServerName());
+		serverPathSB.append(":");
+		serverPathSB.append(scenicDistrict.getServerPort());
+		serverPathSB.append("/ElectronicGuideSD");
+		
+		return serverPathSB.toString();
+	}
+
 }
