@@ -97,4 +97,11 @@ public class UserServiceImpl implements UserService {
 		}
 		return count;
 	}
+
+	@Override
+	public User getEntity(String userName, String password) {
+		// TODO Auto-generated method stub
+		User user=new User(userName,password);
+		return userDao.get(user);
+	}
 }

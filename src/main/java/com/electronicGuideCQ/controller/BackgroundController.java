@@ -114,7 +114,7 @@ public class BackgroundController {
 				url=request.getContextPath()+"/background/user/info/info";
 			else {
 				String serverPath = scenicDistrictService.getServerPathById(user.getSceDisId());
-				url=serverPath+"/background/user/info/info";
+				url=serverPath+"/background/loginFromCQ?userName="+userName+"&password="+password;
 			}
 			plan.setUrl(url);
 			return JsonUtil.getJsonFromObject(plan);
@@ -210,6 +210,23 @@ public class BackgroundController {
 			e.printStackTrace();
 		}
 		return json;
+	}
+
+	@RequestMapping(value="/getUser")
+	@ResponseBody
+	public Map<String, Object> getUser(String userName, String password) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		User user=userService.getEntity(userName, password);
+        if(user==null) {
+        	jsonMap.put("status", "no");
+        	jsonMap.put("message", "无此用户");
+        }
+        else {
+        	jsonMap.put("status", "ok");
+        	jsonMap.put("user", user);
+        }
+		return jsonMap;
 	}
 
 	@RequestMapping(value="/exit")

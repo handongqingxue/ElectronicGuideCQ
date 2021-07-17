@@ -27,4 +27,6 @@ public interface UserService {
 	User getById(Integer id);
 
 	int checkById(Integer check, String resultStr, String content, Integer id);
+
+	User getEntity(String userName, String password);
 }
