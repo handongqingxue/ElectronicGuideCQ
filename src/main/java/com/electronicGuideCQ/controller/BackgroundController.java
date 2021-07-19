@@ -115,7 +115,7 @@ public class BackgroundController {
 			}
 			else {
 				String serverPath = scenicDistrictService.getServerPathById(user.getSceDisId());
-				url=serverPath+"/background/loginFromCQ?userName="+userName+"&password="+password;
+				url=serverPath+"/background/loginFromCQ?serverPath="+serverPath+"&userName="+userName+"&password="+password;
 			}
 			plan.setUrl(url);
 			return JsonUtil.getJsonFromObject(plan);
