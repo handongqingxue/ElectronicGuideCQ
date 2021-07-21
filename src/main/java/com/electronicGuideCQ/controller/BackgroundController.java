@@ -1,5 +1,6 @@
 package com.electronicGuideCQ.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,9 +109,10 @@ public class BackgroundController {
 			
 			plan.setStatus(0);
 			plan.setMsg("验证通过");
+			session.setAttribute("user", user);
+			System.out.println("sessionId==="+session.getId());
 			String url=null;
 			if("admin".equals(user.getUserName())) {
-				session.setAttribute("user", user);
 				url=request.getContextPath()+"/background/user/info/info";
 			}
 			else {
@@ -211,23 +213,6 @@ public class BackgroundController {
 			e.printStackTrace();
 		}
 		return json;
-	}
-
-	@RequestMapping(value="/getUser")
-	@ResponseBody
-	public Map<String, Object> getUser(String userName, String password) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		User user=userService.getEntity(userName, password);
-        if(user==null) {
-        	jsonMap.put("status", "no");
-        	jsonMap.put("message", "无此用户");
-        }
-        else {
-        	jsonMap.put("status", "ok");
-        	jsonMap.put("user", user);
-        }
-		return jsonMap;
 	}
 
 	@RequestMapping(value="/exit")
