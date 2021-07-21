@@ -43,8 +43,8 @@ public class BackgroundController {
 	 * Ìø×ªÖÁµÇÂ¼Ò³Ãæ
 	 * @return
 	 */
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String login() {
+	@RequestMapping(value="/goLogin",method=RequestMethod.GET)
+	public String goLogin() {
 		return MODULE_NAME+"/login";
 	}
 
