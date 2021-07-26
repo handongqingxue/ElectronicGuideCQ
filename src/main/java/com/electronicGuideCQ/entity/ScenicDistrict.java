@@ -57,6 +57,30 @@ public class ScenicDistrict {
 	public void setPicHeight(Float picHeight) {
 		this.picHeight = picHeight;
 	}
+	public Float getLongitudeStart() {
+		return longitudeStart;
+	}
+	public void setLongitudeStart(Float longitudeStart) {
+		this.longitudeStart = longitudeStart;
+	}
+	public Float getLongitudeEnd() {
+		return longitudeEnd;
+	}
+	public void setLongitudeEnd(Float longitudeEnd) {
+		this.longitudeEnd = longitudeEnd;
+	}
+	public Float getLatitudeStart() {
+		return latitudeStart;
+	}
+	public void setLatitudeStart(Float latitudeStart) {
+		this.latitudeStart = latitudeStart;
+	}
+	public Float getLatitudeEnd() {
+		return latitudeEnd;
+	}
+	public void setLatitudeEnd(Float latitudeEnd) {
+		this.latitudeEnd = latitudeEnd;
+	}
 	public String getIntroduce() {
 		return introduce;
 	}
@@ -101,6 +125,10 @@ public class ScenicDistrict {
 	private Float mapHeight;
 	private Float picWidth;
 	private Float picHeight;
+	private Float longitudeStart;//经度开始
+	private Float longitudeEnd;//经度结束
+	private Float latitudeStart;//纬度开始
+	private Float latitudeEnd;//纬度结束
 	private String introduce;
 	private String serverName;
 	private String serverPort;

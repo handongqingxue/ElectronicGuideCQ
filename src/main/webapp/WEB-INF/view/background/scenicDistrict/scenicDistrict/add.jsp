@@ -26,8 +26,12 @@
 	width: 250px;
 	height:30px;
 }
-.mapWidth_inp,.mapHeight_inp,.picWidth_inp,.picHeight_inp{
+.mapWidth_inp,.mapHeight_inp,.picWidth_inp,.picHeight_inp,.serverName_inp{
 	width: 170px;
+	height:30px;
+}
+.longitudeStart_inp,.longitudeEnd_inp,.latitudeStart_inp,.latitudeEnd_inp{
+	width: 130px;
 	height:30px;
 }
 .sort_inp{
@@ -99,7 +103,7 @@ function initNewDialog(){
 	$("#new_div table tr").each(function(i){
 		if(i==1)
 			$(this).css("height","250px");
-		else if(i==4)
+		else if(i==6)
 			$(this).css("height","200px");
 		else
 			$(this).css("height","45px");
@@ -130,10 +134,16 @@ function checkAdd(){
 				if(checkMapHeight()){
 					if(checkPicWidth()){
 						if(checkPicHeight()){
-							if(checkIntroduce()){
-								if(checkServerName()){
-									if(checkServerPort()){
-										addScenicDistrict();
+							if(checkLongitudeStart()){
+								if(checkLongitudeEnd()){
+									if(checkLatitudeStart()){
+										if(checkLatitudeEnd()){
+											if(checkServerName()){
+												if(checkIntroduce()){
+													addScenicDistrict();
+												}
+											}
+										}
 									}
 								}
 							}
@@ -251,21 +261,45 @@ function checkPicHeight(){
 		return true;
 }
 
-function focusIntroduce(){
-	var introduce = $("#introduce").val();
-	if(introduce=="景区介绍不能为空"){
-		$("#introduce").val("");
-		$("#introduce").css("color", "#555555");
+//验证开始经度
+function checkLongitudeStart(){
+	var longitudeStart = $("#longitudeStart").val();
+	if(longitudeStart==null||longitudeStart==""){
+	  	alert("请输入开始经度");
+	  	return false;
 	}
+	else
+		return true;
 }
 
-//验证景区介绍
-function checkIntroduce(){
-	var introduce = $("#introduce").val();
-	if(introduce==null||introduce==""||introduce=="景区介绍不能为空"){
-		$("#introduce").css("color","#E15748");
-    	$("#introduce").val("景区介绍不能为空");
-    	return false;
+//验证结束经度
+function checkLongitudeEnd(){
+	var longitudeEnd = $("#longitudeEnd").val();
+	if(longitudeEnd==null||longitudeEnd==""){
+	  	alert("请输入结束经度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证开始纬度
+function checkLatitudeStart(){
+	var latitudeStart = $("#latitudeStart").val();
+	if(latitudeStart==null||latitudeStart==""){
+	  	alert("请输入开始纬度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证结束纬度
+function checkLatitudeEnd(){
+	var latitudeEnd = $("#latitudeEnd").val();
+	if(latitudeEnd==null||latitudeEnd==""){
+	  	alert("请输入结束纬度");
+	  	return false;
 	}
 	else
 		return true;
@@ -291,12 +325,21 @@ function checkServerName(){
 		return true;
 }
 
-//验证服务器端口号
-function checkServerPort(){
-	var serverPort = $("#serverPort").val();
-	if(serverPort==null||serverPort==""){
-	  	alert("请输入服务器端口号");
-	  	return false;
+function focusIntroduce(){
+	var introduce = $("#introduce").val();
+	if(introduce=="景区介绍不能为空"){
+		$("#introduce").val("");
+		$("#introduce").css("color", "#555555");
+	}
+}
+
+//验证景区介绍
+function checkIntroduce(){
+	var introduce = $("#introduce").val();
+	if(introduce==null||introduce==""||introduce=="景区介绍不能为空"){
+		$("#introduce").css("color","#E15748");
+    	$("#introduce").val("景区介绍不能为空");
+    	return false;
 	}
 	else
 		return true;
@@ -444,16 +487,20 @@ function setFitWidthInParent(parent,self){
 		  </tr>
 		  <tr>
 			<td class="td1" align="right">
-				景区介绍
+				经度
 			</td>
 			<td class="td2">
-				<textarea rows="8" cols="50" id="introduce" name="introduce" placeholder="请输入景区介绍" onfocus="focusIntroduce()" onblur="checkIntroduce()"></textarea>
+				<input type="number" class="longitudeStart_inp" id="longitudeStart" name="longitudeStart" placeholder="请输入开始经度"/>
+				-
+				<input type="number" class="longitudeEnd_inp" id="longitudeEnd" name="longitudeEnd" placeholder="请输入结束经度"/>
 			</td>
 			<td class="td1" align="right">
-				排序
+				纬度
 			</td>
 			<td class="td2">
-				<input type="number" class="sort_inp" id="sort" name="sort" placeholder="请输入排序"/>
+				<input type="number" class="latitudeStart_inp" id="latitudeStart" name="latitudeStart" placeholder="请输入开始纬度"/>
+				-
+				<input type="number" class="latitudeEnd_inp" id="latitudeEnd" name="latitudeEnd" placeholder="请输入结束纬度"/>
 			</td>
 		  </tr>
 		  <tr>
@@ -464,10 +511,22 @@ function setFitWidthInParent(parent,self){
 				<input type="text" class="serverName_inp" id="serverName" name="serverName" placeholder="请输入服务器ip" onfocus="focusServerName()" onblur="checkServerName()"/>
 			</td>
 			<td class="td1" align="right">
-				服务器端口号
+				排序
 			</td>
 			<td class="td2">
-				<input type="number" class="serverPort_inp" id="serverPort" name="serverPort" placeholder="请输入服务器端口号"/>
+				<input type="number" class="sort_inp" id="sort" name="sort" placeholder="请输入排序"/>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="td1" align="right">
+				景区介绍
+			</td>
+			<td class="td2">
+				<textarea rows="8" cols="50" id="introduce" name="introduce" placeholder="请输入景区介绍" onfocus="focusIntroduce()" onblur="checkIntroduce()"></textarea>
+			</td>
+			<td class="td1" align="right">
+			</td>
+			<td class="td2">
 			</td>
 		  </tr>
 		</table>

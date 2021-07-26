@@ -27,8 +27,12 @@
 	width: 250px;
 	height:30px;
 }
-.mapWidth_inp,.mapHeight_inp,.picWidth_inp,.picHeight_inp{
+.mapWidth_inp,.mapHeight_inp,.picWidth_inp,.picHeight_inp,.serverName_inp,.serverPort_inp{
 	width: 170px;
+	height:30px;
+}
+.longitudeStart_inp,.longitudeEnd_inp,.latitudeStart_inp,.latitudeEnd_inp{
+	width: 130px;
 	height:30px;
 }
 .sort_inp{
@@ -99,7 +103,7 @@ function initEditDialog(){
 	$("#edit_div table tr").each(function(i){
 		if(i==1)
 			$(this).css("height","250px");
-		else if(i==4)
+		else if(i==5)
 			$(this).css("height","200px");
 		else
 			$(this).css("height","45px");
@@ -130,10 +134,18 @@ function checkEdit(){
 				if(checkMapHeight()){
 					if(checkPicWidth()){
 						if(checkPicHeight()){
-							if(checkIntroduce()){
-								if(checkServerName()){
-									if(checkServerPort()){
-										editScenicDistrict();
+							if(checkLongitudeStart()){
+								if(checkLongitudeEnd()){
+									if(checkLatitudeStart()){
+										if(checkLatitudeEnd()){
+											if(checkIntroduce()){
+												if(checkServerName()){
+													if(checkServerPort()){
+														editScenicDistrict();
+													}
+												}
+											}
+										}
 									}
 								}
 							}
@@ -245,6 +257,50 @@ function checkPicHeight(){
 	var picHeight = $("#picHeight").val();
 	if(picHeight==null||picHeight==""){
 	  	alert("请输入地图图片高度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证开始经度
+function checkLongitudeStart(){
+	var longitudeStart = $("#longitudeStart").val();
+	if(longitudeStart==null||longitudeStart==""){
+	  	alert("请输入开始经度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证结束经度
+function checkLongitudeEnd(){
+	var longitudeEnd = $("#longitudeEnd").val();
+	if(longitudeEnd==null||longitudeEnd==""){
+	  	alert("请输入结束经度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证开始纬度
+function checkLatitudeStart(){
+	var latitudeStart = $("#latitudeStart").val();
+	if(latitudeStart==null||latitudeStart==""){
+	  	alert("请输入开始纬度");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证结束纬度
+function checkLatitudeEnd(){
+	var latitudeEnd = $("#latitudeEnd").val();
+	if(latitudeEnd==null||latitudeEnd==""){
+	  	alert("请输入结束纬度");
 	  	return false;
 	}
 	else
@@ -441,6 +497,24 @@ function setFitWidthInParent(parent,self){
 			</td>
 			<td class="td2">
 				<input type="number" class="picHeight_inp" id="picHeight" name="picHeight" value="${requestScope.scenicDistrict.picHeight }" placeholder="请输入地图图片长度"/>px
+			</td>
+		  </tr>
+		  <tr>
+			<td class="td1" align="right">
+				经度
+			</td>
+			<td class="td2">
+				<input type="number" class="longitudeStart_inp" id="longitudeStart" name="longitudeStart" value="${requestScope.scenicDistrict.longitudeStart }" placeholder="请输入开始经度"/>
+				-
+				<input type="number" class="longitudeEnd_inp" id="longitudeEnd" name="longitudeEnd" value="${requestScope.scenicDistrict.longitudeEnd }" placeholder="请输入结束经度"/>
+			</td>
+			<td class="td1" align="right">
+				纬度
+			</td>
+			<td class="td2">
+				<input type="number" class="latitudeStart_inp" id="latitudeStart" name="latitudeStart" value="${requestScope.scenicDistrict.latitudeStart }" placeholder="请输入开始纬度"/>
+				-
+				<input type="number" class="latitudeEnd_inp" id="latitudeEnd" name="latitudeEnd" value="${requestScope.scenicDistrict.latitudeEnd }" placeholder="请输入结束纬度"/>
 			</td>
 		  </tr>
 		  <tr>

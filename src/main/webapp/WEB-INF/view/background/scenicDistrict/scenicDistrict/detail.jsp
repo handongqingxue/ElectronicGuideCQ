@@ -69,7 +69,7 @@ function initDetailDialog(){
 	$("#detail_div table tr").each(function(i){
 		if(i==1)
 			$(this).css("height","250px");
-		else if(i==4)
+		else if(i==5)
 			$(this).css("height","200px");
 		else
 			$(this).css("height","45px");
@@ -169,6 +169,20 @@ function setFitWidthInParent(parent,self){
 				</td>
 				<td class="td2">
 					<span>${requestScope.scenicDistrict.picHeight }</span>
+				</td>
+			  </tr>
+			  <tr>
+				<td class="td1" align="right">
+					经度
+				</td>
+				<td class="td2">
+					<span>${requestScope.scenicDistrict.longitudeStart }-${requestScope.scenicDistrict.longitudeEnd }</span>
+				</td>
+				<td class="td1" align="right">
+					纬度
+				</td>
+				<td class="td2">
+					<span>${requestScope.scenicDistrict.latitudeStart }-${requestScope.scenicDistrict.latitudeEnd }</span>
 				</td>
 			  </tr>
 			  <tr>

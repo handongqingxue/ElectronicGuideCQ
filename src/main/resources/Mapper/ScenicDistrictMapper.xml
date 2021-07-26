@@ -49,6 +49,18 @@
  			<if test="picHeight!=null">
  				picHeight,
  			</if>
+ 			<if test="longitudeStart!=null">
+ 				longitudeStart,
+ 			</if>
+ 			<if test="longitudeEnd!=null">
+ 				longitudeEnd,
+ 			</if>
+ 			<if test="latitudeStart!=null">
+ 				latitudeStart,
+ 			</if>
+ 			<if test="latitudeEnd!=null">
+ 				latitudeEnd,
+ 			</if>
  			<if test="introduce!=null">
  				introduce,
  			</if>
@@ -88,6 +100,18 @@
  			</if>
  			<if test="picHeight!=null">
  				#{picHeight},
+ 			</if>
+ 			<if test="longitudeStart!=null">
+ 				#{longitudeStart},
+ 			</if>
+ 			<if test="longitudeEnd!=null">
+ 				#{longitudeEnd},
+ 			</if>
+ 			<if test="latitudeStart!=null">
+ 				#{latitudeStart},
+ 			</if>
+ 			<if test="latitudeEnd!=null">
+ 				#{latitudeEnd},
  			</if>
  			<if test="introduce!=null">
  				#{introduce},
@@ -130,6 +154,18 @@
 			</if>
 			<if test="picHeight!=null">
 				picHeight=#{picHeight},
+			</if>
+			<if test="longitudeStart!=null">
+				longitudeStart=#{longitudeStart},
+			</if>
+			<if test="longitudeEnd!=null">
+				longitudeEnd=#{longitudeEnd},
+			</if>
+			<if test="latitudeStart!=null">
+				latitudeStart=#{latitudeStart},
+			</if>
+			<if test="latitudeEnd!=null">
+				latitudeEnd=#{latitudeEnd},
 			</if>
 			<if test="introduce!=null">
 				introduce=#{introduce},
