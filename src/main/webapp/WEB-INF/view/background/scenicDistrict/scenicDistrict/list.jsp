@@ -62,6 +62,8 @@ function initTab1(){
 		columns:[[
 			{field:"name",title:"名称",width:150},
 			{field:"address",title:"地址",width:150},
+			{field:"longitude",title:"经度",width:200},
+			{field:"latitude",title:"纬度",width:200},
 			{field:"introduce",title:"介绍",width:250},
             {field:"createTime",title:"创建时间",width:150},
             {field:"sort",title:"排序",width:80},
@@ -74,7 +76,7 @@ function initTab1(){
         onLoadSuccess:function(data){
 			if(data.total==0){
 				$(this).datagrid("appendRow",{name:"<div style=\"text-align:center;\">暂无信息<div>"});
-				$(this).datagrid("mergeCells",{index:0,field:"name",colspan:6});
+				$(this).datagrid("mergeCells",{index:0,field:"name",colspan:8});
 				data.total=0;
 			}
 			

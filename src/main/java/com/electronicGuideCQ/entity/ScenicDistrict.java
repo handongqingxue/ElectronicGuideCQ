@@ -81,6 +81,18 @@ public class ScenicDistrict {
 	public void setLatitudeEnd(Float latitudeEnd) {
 		this.latitudeEnd = latitudeEnd;
 	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
 	public String getIntroduce() {
 		return introduce;
 	}
@@ -129,6 +141,8 @@ public class ScenicDistrict {
 	private Float longitudeEnd;//经度结束
 	private Float latitudeStart;//纬度开始
 	private Float latitudeEnd;//纬度结束
+	private String longitude;
+	private String latitude;
 	private String introduce;
 	private String serverName;
 	private String serverPort;
