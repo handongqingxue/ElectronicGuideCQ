@@ -46,6 +46,7 @@ public class WechatAppletController {
 		return jsonMap;
 	}
 
+	/**
 	@RequestMapping(value="/requestSDApi")
 	@ResponseBody
 	public Map<String, Object> requestSDApi(String url) {
@@ -80,4 +81,5 @@ public class WechatAppletController {
 		}
 		return jsonMap;
 	}
+	**/
 }
