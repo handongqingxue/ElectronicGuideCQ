@@ -14,6 +14,8 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userDao;
+	@Autowired
+	private ScenicDistrictMapper scenicDistrictDao;
 
 	@Override
 	public boolean checkPassWord(String password, String userName) {
@@ -101,7 +103,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getEntity(String userName, String password) {
 		// TODO Auto-generated method stub
-		User user=new User(userName,password);
-		return userDao.get(user);
+		User whereUser=new User(userName,password);
+		User user = userDao.get(whereUser);
+		ScenicDistrict scenicDistrict = scenicDistrictDao.selectById(user.getSceDisId().toString());
+		user.setScenicDistrict(scenicDistrict);
+		return user;
 	}
 }
