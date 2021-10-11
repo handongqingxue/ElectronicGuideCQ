@@ -45,6 +45,8 @@ public class BackgroundController {
 	 */
 	@RequestMapping(value="/goLogin",method=RequestMethod.GET)
 	public String goLogin() {
+		Subject currentUser = SecurityUtils.getSubject();//景区服务器端注销后，之前的总登录页也得跟着注销（暂时这么设计）
+	    currentUser.logout();    
 		return MODULE_NAME+"/login";
 	}
 
@@ -110,7 +112,6 @@ public class BackgroundController {
 			plan.setStatus(0);
 			plan.setMsg("验证通过");
 			session.setAttribute("user", user);
-			System.out.println("sessionId==="+session.getId());
 			String url=null;
 			if("admin".equals(user.getUserName())) {
 				url=request.getContextPath()+"/background/user/info/info";
@@ -218,8 +219,8 @@ public class BackgroundController {
 	@RequestMapping(value="/exit")
 	public String exit(HttpSession session) {
 		System.out.println("退出接口");
-		 Subject currentUser = SecurityUtils.getSubject();
-	       currentUser.logout();    
+		Subject currentUser = SecurityUtils.getSubject();
+	    currentUser.logout();    
 		return "/background/login";
 	}
 }

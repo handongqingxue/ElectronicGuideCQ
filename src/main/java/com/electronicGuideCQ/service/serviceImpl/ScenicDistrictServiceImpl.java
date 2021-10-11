@@ -59,8 +59,12 @@ public class ScenicDistrictServiceImpl implements ScenicDistrictService {
 		StringBuilder serverPathSB=new StringBuilder();
 		serverPathSB.append("https://");
 		serverPathSB.append(scenicDistrict.getServerName());
-		//serverPathSB.append(":");
-		//serverPathSB.append(scenicDistrict.getServerPort());
+		/*
+		serverPathSB.append("http://");
+		serverPathSB.append(scenicDistrict.getServerName());
+		serverPathSB.append(":");
+		serverPathSB.append(scenicDistrict.getServerPort());
+		*/
 		serverPathSB.append("/ElectronicGuideSD");
 		
 		return serverPathSB.toString();
